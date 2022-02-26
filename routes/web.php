@@ -2,7 +2,10 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Models\Seat;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +19,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Index', []);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
