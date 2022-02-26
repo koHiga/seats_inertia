@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Http\Controllers\SeatController;
 use App\Models\Seat;
 
 /*
@@ -18,9 +19,8 @@ use App\Models\Seat;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Index', []);
-});
+Route::get('/', [SeatController::class, 'index'])
+    ->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

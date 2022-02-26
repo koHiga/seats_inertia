@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SeatController extends Controller
 {
@@ -13,7 +14,8 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        // Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
+        return Inertia::render('Index');
     }
 
     /**
