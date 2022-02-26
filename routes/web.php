@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\SeatController;
-use App\Models\Seat;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +20,9 @@ use App\Models\Seat;
 
 Route::get('/', [SeatController::class, 'index'])
     ->name('index');
+
+// Custom root
+Route::get('/confirm', [SeatController::class, 'confirm'])->name("confirm");
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

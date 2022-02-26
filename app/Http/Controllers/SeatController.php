@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Seat;
 
 class SeatController extends Controller
 {
@@ -14,8 +15,23 @@ class SeatController extends Controller
      */
     public function index()
     {
+        // データベーステーブルを確認するメソッド
+        //dd(Seat::all());
         // Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
-        return Inertia::render('Index');
+        return Inertia::render('Index', ['seats' => Seat::all()]);
+    }
+
+    /**
+     * Confirmation of input and seleted seats are available or not.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function confirm()
+    {
+        // データベーステーブルを確認するメソッド
+        //dd(Seat::all());
+
+        return Inertia::render('Confirm');
     }
 
     /**

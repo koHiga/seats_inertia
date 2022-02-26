@@ -11281,6 +11281,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.dbShow {
+  display: block;
+  margin-top: 200px;
+}
 /*
 ! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
 *//*
