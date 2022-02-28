@@ -30,7 +30,10 @@ class SeatController extends Controller
     {
         $request->validateWithBag(
             'confirm',
-            ['guestsCountInput' => 'required']
+            [
+                'guestsCountInput' => 'required',
+                'selectedSeatTypes' => 'required'
+            ]
         );
 
         //dd($request);
