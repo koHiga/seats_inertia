@@ -22,7 +22,7 @@ Route::get('/', [SeatController::class, 'index'])
     ->name('index');
 
 // Custom root
-Route::get('/confirm', [SeatController::class, 'confirm'])->name("confirm");
+Route::post('/confirm', [SeatController::class, 'confirm'])->name("confirm");
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

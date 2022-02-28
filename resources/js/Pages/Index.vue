@@ -6,15 +6,17 @@
         <h1>Welcome To Our Shop</h1>
         <p>We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
 
-        <input type="number" v-model="guestsCountInput" />
+        <section class="userInputArea">
 
-        <button type="button" v-for="seatType in seatTypes" v-bind:value="seatType.id" :key="seatType.id">
-            {{ seatType.jp }}
-        </button>
+            <form @submit.prevent="confirm">
+				<input type="number" v-model="form.guestsCountInput" />
 
-        <inertia-link :href="route('confirm')">
-            <button type="button" value="confirm">確認</button>
-        </inertia-link>
+				<input type="button" v-for="seatType in seatTypes" v-bind:value="seatType.id" :key="seatType.id">
+
+				<button :type="submit">確認</button>
+            </form>
+
+        </section>
         
         <!-- DEV ONLY: show data passed by SeatController -->
         <span class="dbShow">
@@ -32,25 +34,32 @@
 
 <script>
     import { defineComponent } from 'vue'
-    import { Head, InertiaLink } from '@inertiajs/inertia-vue3';
+    import { Head } from '@inertiajs/inertia-vue3'
 
     export default defineComponent({
-        props: ['seats'],
-
         components: {
-            Head,
-            InertiaLink,
+            Head
         },
 
         data() {
             return {
-                guestsCountInput: Number,
+                form: this.$inertia.form({
+                    guestsCountInput: '',
+                }),
+
                 seatTypes: [
                     {id: 'counter', jp: 'カウンター'},
                     {id: 'tableSeat', jp: 'テーブル席'},
                     {id: 'tatamiRoom', jp: '座敷席'},
-                ]
+                ],
             }
         },
+
+		methods: {
+            confirm() {
+                console.log("send post")
+                this.form.post('/confirm')
+            }
+		},
     })
 </script>

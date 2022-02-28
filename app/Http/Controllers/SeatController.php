@@ -18,7 +18,7 @@ class SeatController extends Controller
         // データベーステーブルを確認するメソッド
         //dd(Seat::all());
         // Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
-        return Inertia::render('Index', ['seats' => Seat::all()]);
+        return Inertia::render('Index');
     }
 
     /**
@@ -26,12 +26,19 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function confirm()
+    public function confirm(Request $request)
     {
-        // データベーステーブルを確認するメソッド
-        //dd(Seat::all());
+        $request->validateWithBag(
+            'confirm',
+            ['guestsCountInput' => 'required']
+        );
 
-        return Inertia::render('Confirm');
+        //dd($request);
+
+        return Inertia::render('Confirm', [
+            'seats' => Seat::all(),
+            'request' => $request,
+        ]);
     }
 
     /**
