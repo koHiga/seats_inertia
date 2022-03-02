@@ -47,8 +47,6 @@
                     {id: 'tableSeat', jp: 'テーブル席'},
                     {id: 'tatamiRoom', jp: '座敷席'},
                 ],
-
-                
             }
         },
 
@@ -57,11 +55,34 @@
             this.$watch(
                 () => [this.$data.form.guestsCountInput, this.$data.form.selectedSeatTypes],
                 ([val1, val2]) => {
-                    if (val1 < 0) {
+
+                    // val1: InputNum validated
+                    if (val1 > 0 && val1 <= 50) {
+
                         console.log(val1, val2)
-                    this.checkInputNum = false
+                        this.checkInputNum = true
+
+                        if (val2.length >= 1 && val2.length <= 3) {
+                            this.checkAllSet = true
+                        } else {
+                            this.checkAllSet = false
+                        }
+
+                    } else {
+                        // When input number is valid and any of seatType is selected,
+                        // make confirm button active.
+                        
+                        console.log(val1, val2)
+                        this.checkInputNum = false
+                        this.checkAllSet = false
+                        
+                        // val2: selectedSetTypes is validattion
+                        
                     }
-                }
+                },
+                {
+                    deep: true
+                },
             )
         },
 

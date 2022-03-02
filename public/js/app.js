@@ -22992,10 +22992,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           val1 = _ref2[0],
           val2 = _ref2[1];
 
-      if (val1 < 0) {
+      // val1: InputNum validated
+      if (val1 > 0 && val1 <= 50) {
+        console.log(val1, val2);
+        _this.checkInputNum = true;
+
+        if (val2.length >= 1 && val2.length <= 3) {
+          _this.checkAllSet = true;
+        } else {
+          _this.checkAllSet = false;
+        }
+      } else {
+        // When input number is valid and any of seatType is selected,
+        // make confirm button active.
         console.log(val1, val2);
         _this.checkInputNum = false;
+        _this.checkAllSet = false; // val2: selectedSetTypes is validattion
       }
+    }, {
+      deep: true
     });
   },
   methods: {
