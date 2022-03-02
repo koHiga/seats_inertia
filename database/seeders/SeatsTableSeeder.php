@@ -22,15 +22,18 @@ class SeatsTableSeeder extends Seeder
         $seats = [
             [
                 'seatType' => 'counter',
-                'remainingSeats' => 10
+                'remainingSeats' => 10,
+                'maxGuestsPerSeat' => 1,
             ],
             [
                 'seatType' => 'tableSeat',
-                'remainingSeats' => 5
+                'remainingSeats' => 5,
+                'maxGuestsPerSeat' => 4,
             ],
             [
                 'seatType' => 'tatamiRoom',
-                'remainingSeats' => 3
+                'remainingSeats' => 3,
+                'maxGuestsPerSeat' => 6,
             ]
         ];
 

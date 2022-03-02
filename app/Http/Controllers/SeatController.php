@@ -26,7 +26,7 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function confirm(Request $request)
+    public function confirm(Request $request, Seat $seat)
     {
         $request->validateWithBag(
             'confirm',
@@ -36,7 +36,12 @@ class SeatController extends Controller
             ]
         );
 
-        //dd($request);
+        $inputNum = $request->guestsCountInput;
+        $selectedSeats = $request->selectedSeatTypes;
+
+        dd($inputNum, $selectedSeats);
+
+
 
         return Inertia::render('Confirm', [
             'seats' => Seat::all(),
