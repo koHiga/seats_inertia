@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('seatType', 50);
             $table->integer('remainingSeats');
-            $table->string('maxGuestsPerSeat');
+            $table->integer('maxGuestsPerSeat');
             $table->timestamps();
         });
     }

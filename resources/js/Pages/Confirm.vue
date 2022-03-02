@@ -7,14 +7,11 @@
 
 
         <!-- DEV ONLY: show data passed by SeatController -->
-        <span class="dbShow">
-            <tbody>
-                <tr v-for="seat in seats" :key="seat.id">
-                    <td>{{ seat.seatType }}</td>
-                    <td>{{ seat.remainingSeats }}</td>
-                </tr>
-            </tbody>
-        </span>
+            <ul>
+                <li v-for="array in props.maxGuestsPerSeatBySelectedSeats" :key="array.id">
+                    {{ array }}
+                </li>
+            </ul>
         <!-- DEV ONLY: end -->
 </template>
 
@@ -24,8 +21,8 @@
 
     export default defineComponent({
         props: [
-			'seats',
-			'request'
+			'request',
+            'maxGuestsPerSeatBySelectedSeats',
 			],
 
         components: {
@@ -46,7 +43,6 @@
         },
 
 		methods: {
-
 		},
     })
 </script>

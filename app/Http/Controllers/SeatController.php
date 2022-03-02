@@ -36,15 +36,47 @@ class SeatController extends Controller
             ]
         );
 
-        $inputNum = $request->guestsCountInput;
+        $guestsCount = $request->guestsCountInput;
         $selectedSeats = $request->selectedSeatTypes;
 
-        dd($inputNum, $selectedSeats);
+        // array([ 選択された席種 => その席種の最大定員])
+        $maxGuestsPerSeatBySelectedSeats = [];
+
+        // array([ 選択された席種 => 空席の数])
+        $remainingPerSeatTypes = [];
+
+        // array([ 選択された席種 => 空席があるか否か])
+        $selectedSeatsAvailabilities = [];
+
+        foreach ($selectedSeats as $selectedSeat) {
+
+            // 席種の最大定員をKeyValuePairとして配列に追加
+            $maxGuests = $seat::where('seatType', $selectedSeat)
+                ->select('maxGuestsPerSeat')->first();
+            array_push($maxGuestsPerSeatBySelectedSeats, [$selectedSeat => $maxGuests->maxGuestsPerSeat]);
+
+            // 席種の空席の数をKeyValuePairとして配列に追加
+            $remaining = $seat::where('seatType', $selectedSeat)
+                ->select('remainingSeats')->first();
+            array_push($remainingPerSeatTypes, [$selectedSeat => $remaining->remainingSeats]);
+
+            // お客さんの人数と、空席の数及びその席種の最大定員を掛けた数を比較して
+            // 後者が前者を上回らない場合に、availabilityをtrueとするKeyValuePairを配列に追加
+            $maxPeopleByRemainingSeat = $maxGuests->maxGuestsPerSeat * $remaining->remainingSeats;
+            if ($guestsCount <= $maxPeopleByRemainingSeat) {
+                array_push($selectedSeatsAvailabilities, [$selectedSeat => true]);
+            } else {
+                array_push($selectedSeatsAvailabilities, [$selectedSeat => false]);
+            };
+        }
+
+        dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities);
+
+        // 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
 
 
 
         return Inertia::render('Confirm', [
-            'seats' => Seat::all(),
             'request' => $request,
         ]);
     }
