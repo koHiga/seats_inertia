@@ -39,14 +39,17 @@ class SeatController extends Controller
         $guestsCount = $request->guestsCountInput;
         $selectedSeats = $request->selectedSeatTypes;
 
-        // array([ 選択された席種 => その席種の最大定員])
+        // array([ 選択された席種 => その席種の最大定員 ])
         $maxGuestsPerSeatBySelectedSeats = [];
 
-        // array([ 選択された席種 => 空席の数])
+        // array([ 選択された席種 => 空席の数 ])
         $remainingPerSeatTypes = [];
 
-        // array([ 選択された席種 => 空席があるか否か])
+        // array([ 選択された席種 => 空席があるか否か ])
         $selectedSeatsAvailabilities = [];
+
+        // array([ 選択された席種 => 席種の最大定員の余り ]) : 余りの少ない順
+        $prioritizedOrderForGuidance = [];
 
         foreach ($selectedSeats as $selectedSeat) {
 
@@ -65,12 +68,36 @@ class SeatController extends Controller
             $maxPeopleByRemainingSeat = $maxGuests->maxGuestsPerSeat * $remaining->remainingSeats;
             if ($guestsCount <= $maxPeopleByRemainingSeat) {
                 array_push($selectedSeatsAvailabilities, [$selectedSeat => true]);
+
+                // 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
+                // 席種の最大定員からお客さんの数を引いて余る数
+                $remainOfOneSeatType = 0;
+
+                switch ($guestsCount) {
+                    case $guestsCount % $maxGuests->maxGuestsPerSeat == 0:
+                        array_push($prioritizedOrderForGuidance, [$selectedSeat => 0]);
+                        break;
+
+                    case $guestsCount % $maxGuests->maxGuestsPerSeat != 0:
+                        $remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
+                        array_push($prioritizedOrderForGuidance, [$selectedSeat => $remainOfOneSeatType]);
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
             } else {
                 array_push($selectedSeatsAvailabilities, [$selectedSeat => false]);
             };
         }
 
-        dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities);
+        // 一つの席で余る数の少ない順に並び替える
+        uasort($prioritizedOrderForGuidance, function ($v1, $v2) {
+            return $v1 < $v2;
+        });
+
+        dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
 
         // 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
 
