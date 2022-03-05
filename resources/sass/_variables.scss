@@ -1,0 +1,23 @@
+// variables
+$theme_green: #008031;
+$bg_color: #eeeeee;
+
+$lg: 1080px;
+$md: 760px;
+$sm: 480px;
+$breakpoints: (
+	'sm': 'screen and (max-width: #{$sm})',
+	'md': 'screen and (max-width: #{$md})',
+	'lg': 'screen and (max-width: #{$lg})'
+);
+
+$headerHeight: 90px;
+$hoverBorder: 2px solid #aaa;
+
+// mixin
+@mixin mq($breakpoint: '') {
+	@media #{map-get($breakpoints, $breakpoint)} {
+		@content;
+	}
+}
+

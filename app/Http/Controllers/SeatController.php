@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Seat;
 
 class SeatController extends Controller
@@ -67,6 +68,8 @@ class SeatController extends Controller
             // 後者が前者を上回らない場合に、availabilityをtrueとするKeyValuePairを配列に追加
             $maxPeopleByRemainingSeat = $maxGuests->maxGuestsPerSeat * $remaining->remainingSeats;
             if ($guestsCount <= $maxPeopleByRemainingSeat) {
+
+                // 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
                 array_push($selectedSeatsAvailabilities, [$selectedSeat => true]);
 
                 // 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
@@ -84,7 +87,7 @@ class SeatController extends Controller
                         break;
 
                     default:
-                        # code...
+                        return Redirect::route('index');
                         break;
                 }
             } else {
@@ -98,9 +101,6 @@ class SeatController extends Controller
         });
 
         dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
-
-        // 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
-
 
 
         return Inertia::render('Confirm', [

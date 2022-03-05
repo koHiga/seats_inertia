@@ -1,6 +1,142 @@
 @import '~bootstrap';
+@import "variables";
 
-.dbShow {
-	display: block;
-	margin-top: 200px;
+/* general */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	$color: #eee;
+	color: $color;
+	text-decoration: none;
+
+	&:hover, &:active, &:visited {
+		text-underline-offset: 3px;
+		color: $color;
+		text-decoration: underline;
+	}
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: -apple-system, Sans-Serif, 'メイリオ';
+	background-color: $bg_color;
+
+	.container {
+		margin: 0 auto;
+		width: 80%;
+	}
+	
+	.t-center {
+		text-align: center;
+	}
+
+	.row {
+		display: inline-flex;
+		width: 100%;
+	}
+}
+
+
+
+/* header */
+header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: $headerHeight;
+	color: #fff;
+	background-color: $theme_green;
+
+	@include mq(md) {
+		height: $headerHeight * 0.8;
+	}
+	@include mq(sm) {
+		height: $headerHeight * 0.5;
+	}
+
+	.row {
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	h1 {
+		$fontSize: 1.5rem;
+
+		width: 66.6%;
+		height: $headerHeight;
+		background-color: rgba($color: #ffffff, $alpha: 0.1);
+
+		font-size: $fontSize;
+		font-weight: normal;
+		line-height: $headerHeight;
+		text-align: center;
+		
+		@include mq(md) {
+			height: $headerHeight * 0.8;
+			line-height: $headerHeight * 0.8;
+			font-size: $fontSize * 0.7;
+		}
+		@include mq(sm) {
+			height: $headerHeight * 0.5;
+			line-height: $headerHeight * 0.5;
+			font-size: $fontSize * 0.5;
+		}
+	}
+
+	.how-to {
+		$fontSize: 0.9rem;
+
+		font-size: $fontSize;
+
+		@include mq(md) {
+			font-size: $fontSize * 0.3;
+		}
+		@include mq(sm) {
+			font-size: $fontSize * 0.2;
+		}
+	}
+}
+
+/* main-section */
+.main-section {
+	width: 100%;
+	background-color: $bg_color;
+}
+
+/* footer */
+footer {
+	$height: 90px !default;
+	@extend header;
+
+	.footer-content-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 100%;
+
+		@include mq(md) {
+			height: $headerHeight * 0.5;
+		}
+		@include mq(sm) {
+			height: $headerHeight * 0.4;
+		}
+	}
+
+	ul {
+		display: inline-flex;
+
+		li {
+			@extend .how-to;
+			margin-right: 10px;
+			list-style-type: none;
+		}
+	}
+
+	.copyright {
+		@extend .how-to;
+	}
 }

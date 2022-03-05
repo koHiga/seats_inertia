@@ -1,7 +1,9 @@
 <template>
     <Head title="Booking Seats -Welcome" />
 
-    <section id="screenTransitions">
+    <Header></Header>
+
+    <section class="main-section">
 
         <h1>Welcome To Our Shop</h1>
         <p>We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
@@ -21,15 +23,22 @@
         </div>
 
     </section>
+
+    <Footer></Footer>
+
 </template>
 
 <script>
     import { defineComponent } from 'vue'
     import { Head } from '@inertiajs/inertia-vue3'
+    import Header from '../Layouts/Header.vue'
+    import Footer from '../Layouts/Footer.vue'
 
     export default defineComponent({
         components: {
-            Head
+            Head,
+            Header,
+            Footer,
         },
 
         data() {
