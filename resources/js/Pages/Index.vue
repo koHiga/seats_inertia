@@ -4,24 +4,25 @@
     <Header></Header>
 
     <section class="main-section">
+        <div class="container">
 
         <h1>Welcome To Our Shop</h1>
         <p>We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
 
-        <div class="userInputArea">
+            <div class="userInputArea">
 
-            <form @submit.prevent="confirm">
-				<input type="number" v-model="form.guestsCountInput" />
-                <p v-if="!checkInputNum">1から50の整数で入力してください。</p>
-                <p v-else>お客様の人数をご入力ください。</p>
+                <form @submit.prevent="confirm">
+				    <input type="number" v-model="form.guestsCountInput" />
+                    <p v-if="!checkInputNum">1から50の整数で入力してください。</p>
+                    <p v-else>お客様の人数をご入力ください。</p>
 
-				<input type="button" v-for="seatType in seatTypes" v-bind:value="seatType.id" :key="seatType.id" v-on:click="sstBasket">
+				    <input type="button" v-for="seatType in seatTypes" v-bind:value="seatType.id" :key="seatType.id" v-on:click="sstBasket">
 
-				<button :type="submit" :disabled="!checkAllSet">確認</button>
-            </form>
+			        <button :type="submit" :disabled="!checkAllSet">確認</button>
+                </form>
 
+            </div>
         </div>
-
     </section>
 
     <Footer></Footer>
@@ -111,7 +112,7 @@
 
             confirm() {
                 console.log("send post")
-                this.form.post('/confirm')
+                this.form.post(route('confirm'))
             }
 		},
     })
