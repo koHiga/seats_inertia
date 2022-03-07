@@ -41,7 +41,6 @@ body {
 }
 
 
-
 /* header */
 header {
 	display: flex;
@@ -139,4 +138,150 @@ footer {
 	.copyright {
 		@extend .how-to;
 	}
+}
+
+/* index */
+
+.functions-wrapper {
+    width: 100%;
+    position: fixed;
+    top: $headerHeight;
+
+    @include mq(md) {
+		top: $headerHeight * 0.9;
+	}
+	@include mq(sm) {
+		top: $headerHeight * 0.8;
+	}
+}
+
+/* not:form */
+#openingMessage {
+    $fontSize: 1.2rem;
+
+    font-size: $fontSize;
+
+    @include mq(md) {
+        font-size: $fontSize * 0.8;
+    }
+
+    @include mq(sm) {
+        font-size: $fontSize * 0.7;
+    }
+}
+/* form */
+.input-form {
+    .row {
+        display: flex;
+        align-items: center;
+        height: 200px;
+        margin: 20px 0;
+    }
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.gcInput-wrapper {
+    width: 35%;
+    height: 100%;
+
+    .gcInput {
+        width: 100%;
+        height: 80%;
+        background-color: #fff;
+        border: none;
+        font-size: 2rem;
+        text-align: center;
+    
+        &:hover,
+        &:active {
+            border: $hoverBorder;
+        }
+    
+        &.inputted {
+            border: 3px solid #aaa;
+            border-radius: 5px;
+        }
+    
+        &.invalidNum {
+            border: 3px solid rgba(255, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+    }
+    
+    .gcInput-message {
+        width: 150%;
+        height: 20%;
+        margin-bottom: 0;
+        padding: 0;
+        font-size: 0.8rem;
+    }
+}
+
+.gc-suffix {
+    width: 15%;
+    padding: 0 20px;
+    font-size: 1.5rem;
+}
+
+.seat-select-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+
+    .seat-select-buttons {
+        $fontSize: 1.2rem;
+
+        height: 38px;
+        background-color: #fff;
+        border: none;
+        font-size: $fontSize;
+
+        @include mq(md) {
+            font-size: $fontSize * 0.9;
+        }
+        @include mq(sm) {
+            font-size: $fontSize * 0.8;
+        }
+
+        &:hover,
+        &:active {
+            border: $hoverBorder;
+        }
+
+        &.selected {
+            border: 3px solid #aaa;
+            border-radius: 5px;
+        }
+    }
+}
+
+.submit-button-wrapper {
+        text-align: center;
+
+    input[type="submit"] {
+        width: 33%;
+        height: 80px;
+        color: #fff;
+        background-color: $theme_green;
+        border: none;
+        font-size: 2rem;
+        opacity: 0.5;
+
+        transition: opacity 0.3s ease;
+
+        &.all-set {
+            opacity: 1;
+        }
+    }
 }

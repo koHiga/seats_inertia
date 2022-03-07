@@ -1,21 +1,17 @@
 <template>
-    <div>
-        <Head :title="title" />
+    <!-- Page Heading -->
+    <Header></Header>
 
-        <div class="min-h-screen bg-gray-100">
-
-            <!-- Page Heading -->
-            <Header></Header>
-
-            <!-- Page Content -->
-            <main>
-                <slot></slot>
-            </main>
+    <!-- Page Content -->
+    <section class="main-section">
+        <div class="container">
+            <slot></slot>
+            
+        </div>
+    </section>
 
             <!-- Page Footer -->
-            <Footer></Footer>
-        </div>
-    </div>
+    <Footer></Footer>
 </template>
 
 <script>

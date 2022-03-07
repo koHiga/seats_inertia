@@ -1,30 +1,45 @@
 <template>
-<app-layout>
+  <app-layout>
     <Head title="Booking Seats -Welcome" />
 
-    <section class="main-section">
-        <div class="container">
+    <section class="input-form">
+      <h1>Welcome To Our Shop</h1>
+      <p id="openingMessage">We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
 
-        <h1>Welcome To Our Shop</h1>
-        <p>We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
+      <div class="functions-wrapper">
 
-            <div class="userInputArea">
+        <form @submit.prevent="confirm" id="seatForm">
+					<div class="row">
+						<div class="gcInput-wrapper">
+        			<input type="number"
+								v-model="form.guestsCountInput" 
+								v-bind:class="{}"
+								autocomplete="off"
+								class="gcInput"
+								required
+							/>
+        			<p v-if="!checkInputNum" class="gcInput-message">1から50の整数で入力してください。</p>
+        			<p v-else class="gcInput-message">お客様の人数をご入力ください。</p>
+						</div>
 
-                <form @submit.prevent="confirm">
-				    <input type="number" v-model="form.guestsCountInput" />
-                    <p v-if="!checkInputNum">1から50の整数で入力してください。</p>
-                    <p v-else>お客様の人数をご入力ください。</p>
+						<div class="submit-button-wrapper">
+							<input type="button"
+								v-for="seatType in seatTypes"
+								v-bind:value="seatType.id" 
+								:key="seatType.id" 
+								v-on:click="sstBasket"
+								id="submitButton"
+							/>
+						</div>
+        		
+					</div>
+        <button :type="submit" :disabled="!checkAllSet">確認</button>
+        </form>
 
-				    <input type="button" v-for="seatType in seatTypes" v-bind:value="seatType.id" :key="seatType.id" v-on:click="sstBasket">
-
-			        <button :type="submit" :disabled="!checkAllSet">確認</button>
-                </form>
-
-            </div>
-        </div>
+      </div>
     </section>
 
-</app-layout>
+  </app-layout>
 </template>
 
 <script>
