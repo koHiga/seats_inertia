@@ -1,7 +1,6 @@
 <template>
+<app-layout>
     <Head title="Booking Seats -Welcome" />
-
-    <Header></Header>
 
     <section class="main-section">
         <div class="container">
@@ -25,19 +24,20 @@
         </div>
     </section>
 
-    <Footer></Footer>
-
+</app-layout>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
     import { Head } from '@inertiajs/inertia-vue3'
+    import AppLayout from '@/Layouts/AppLayout.vue'
     import Header from '../Layouts/Header.vue'
     import Footer from '../Layouts/Footer.vue'
 
     export default defineComponent({
         components: {
             Head,
+            AppLayout,
             Header,
             Footer,
         },

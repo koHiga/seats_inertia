@@ -1,8 +1,8 @@
 <template>
+<app-layout>
     <Head title="Booking Seats -Confirm" />
 
-    <Header></Header>
-
+<section class="main-section">
 <div class="container">
 	<h1>Confirm</h1>
 	<div>
@@ -10,16 +10,17 @@
         <p>{{ selectedSeatTypes }}</p>
 	</div>
     </div>
-
-    <Footer></Footer>
+</section>
         <!-- DEV ONLY: show data passed by SeatController -->
             
         <!-- DEV ONLY: end -->
+</app-layout>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import AppLayout from '@/Layouts/AppLayout.vue'
     import Header from '../Layouts/Header.vue'
     import Footer from '../Layouts/Footer.vue'
 
@@ -32,6 +33,7 @@
         components: {
             Head,
             Link,
+            AppLayout,
             Header,
             Footer,
         },
