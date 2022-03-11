@@ -22866,8 +22866,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       if (this.form.selectedSeatTypes.includes(event.target.value)) {
         var idx = this.form.selectedSeatTypes.indexOf(event.target.value);
         this.form.selectedSeatTypes.splice(idx, 1);
+        event.target.classList.remove('selected');
       } else {
         this.form.selectedSeatTypes.push(event.target.value);
+        event.target.classList.add('selected');
       }
 
       console.log(this.form.selectedSeatTypes);
@@ -25906,11 +25908,21 @@ var _hoisted_8 = {
   key: 1,
   "class": "gcInput-message"
 };
-var _hoisted_9 = {
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "gc-suffix"
+}, "名様", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "seat-select-buttons-wrapper"
+};
+var _hoisted_11 = ["value"];
+var _hoisted_12 = {
   "class": "submit-button-wrapper"
 };
-var _hoisted_10 = ["value"];
-var _hoisted_11 = ["type", "disabled"];
+var _hoisted_13 = ["type", "disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -25935,7 +25947,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         required: ""
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.guestsCountInput]]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_7, "1から50の整数で入力してください。")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_8, "お客様の人数をご入力ください。"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.guestsCountInput]]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_7, "1から50の整数で入力してください。")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_8, "お客様の人数をご入力ください。"))]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
           type: "button",
           value: seatType.id,
@@ -25943,18 +25955,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = function () {
             return _ctx.sstBasket && _ctx.sstBasket.apply(_ctx, arguments);
           }),
-          id: "submitButton"
+          "class": "seat-select-buttons"
         }, null, 8
         /* PROPS */
-        , _hoisted_10);
+        , _hoisted_11);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: _ctx.submit,
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+          'all-set': _ctx.checkAllSet
+        }),
+        id: "submitButton",
         disabled: !_ctx.checkAllSet
-      }, "確認", 8
-      /* PROPS */
-      , _hoisted_11)], 32
+      }, "確認", 10
+      /* CLASS, PROPS */
+      , _hoisted_13)])], 32
       /* HYDRATE_EVENTS */
       )])])];
     }),

@@ -174,7 +174,6 @@ footer {
     .row {
         display: flex;
         align-items: center;
-        height: 200px;
         margin: 20px 0;
     }
 }
@@ -269,7 +268,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .submit-button-wrapper {
         text-align: center;
 
-    input[type="submit"] {
+    #submitButton {
         width: 33%;
         height: 80px;
         color: #fff;

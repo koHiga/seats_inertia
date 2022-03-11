@@ -20,22 +20,27 @@
 							/>
         			<p v-if="!checkInputNum" class="gcInput-message">1から50の整数で入力してください。</p>
         			<p v-else class="gcInput-message">お客様の人数をご入力ください。</p>
-						</div>
+					  </div>
 
-						<div class="submit-button-wrapper">
+            <span class="gc-suffix">名様</span>
+
+						<div class="seat-select-buttons-wrapper">
 							<input type="button"
 								v-for="seatType in seatTypes"
 								v-bind:value="seatType.id" 
 								:key="seatType.id" 
 								v-on:click="sstBasket"
-								id="submitButton"
+								class="seat-select-buttons"
 							/>
 						</div>
         		
 					</div>
-        <button :type="submit" :disabled="!checkAllSet">確認</button>
-        </form>
 
+					<div class="submit-button-wrapper">
+						<button :type="submit" :class="{ 'all-set': checkAllSet}" id="submitButton" :disabled="!checkAllSet">確認</button>
+					</div>
+        
+        </form>
       </div>
     </section>
 
@@ -117,10 +122,13 @@
 
                     let idx = this.form.selectedSeatTypes.indexOf(event.target.value)
                     this.form.selectedSeatTypes.splice(idx, 1)
+										event.target.classList.remove('selected')
 
                 } else {
 
                     this.form.selectedSeatTypes.push(event.target.value)
+										event.target.classList.add('selected')
+
                 }
                 console.log(this.form.selectedSeatTypes)
             },

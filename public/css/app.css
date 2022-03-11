@@ -11441,7 +11441,6 @@ footer ul li {
 .input-form .row {
   display: flex;
   align-items: center;
-  height: 200px;
   margin: 20px 0;
 }
 
@@ -11527,7 +11526,7 @@ input[type=number]::-webkit-inner-spin-button {
 .submit-button-wrapper {
   text-align: center;
 }
-.submit-button-wrapper input[type=submit] {
+.submit-button-wrapper #submitButton {
   width: 33%;
   height: 80px;
   color: #fff;
@@ -11537,7 +11536,7 @@ input[type=number]::-webkit-inner-spin-button {
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
-.submit-button-wrapper input[type=submit].all-set {
+.submit-button-wrapper #submitButton.all-set {
   opacity: 1;
 }
 /*
