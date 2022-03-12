@@ -3,10 +3,10 @@
     <Head title="Booking Seats -Welcome" />
 
     <section class="input-form">
+			<div class="messages">
       <h1>Welcome To Our Shop</h1>
       <p id="openingMessage">We wan to to know how many people coming together,<br />and our staff will take you to your seat.</p>
-
-      <div class="functions-wrapper">
+			</div>
 
         <form @submit.prevent="confirm" id="seatForm">
 					<div class="row">
@@ -41,7 +41,6 @@
 					</div>
         
         </form>
-      </div>
     </section>
 
   </app-layout>

@@ -11305,7 +11305,7 @@ body {
 }
 body .container {
   margin: 0 auto;
-  width: 80%;
+  height: 100%;
 }
 body .t-center {
   text-align: center;
@@ -11377,6 +11377,7 @@ header .how-to, footer .how-to, footer .copyright, footer ul li {
 
 /* main-section */
 .main-section {
+  width: 100%;
   height: 450px;
   background-color: #eeeeee;
 }
@@ -11406,42 +11407,47 @@ footer ul li {
   list-style-type: none;
 }
 /* index */
+/*
 .functions-wrapper {
+    width: 100%;
+    position: fixed;
+    top: $headerHeight;
+
+    @include mq(md) {
+		top: $headerHeight * 0.9;
+	}
+	@include mq(sm) {
+		top: $headerHeight * 0.8;
+	}
+}
+*/
+/* form */
+.input-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
-  position: fixed;
-  top: 90px;
+  height: 100%;
 }
-@media screen and (max-width: 760px) {
-  .functions-wrapper {
-    top: 81px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .functions-wrapper {
-    top: 72px;
-  }
+.input-form .row {
+  display: flex;
+  align-items: center;
+  margin: 50px 0;
 }
 
 /* not:form */
-#openingMessage {
+.messages #openingMessage {
   font-size: 1.2rem;
 }
 @media screen and (max-width: 760px) {
-  #openingMessage {
+  .messages #openingMessage {
     font-size: 0.96rem;
   }
 }
 @media screen and (max-width: 480px) {
-  #openingMessage {
+  .messages #openingMessage {
     font-size: 0.84rem;
   }
-}
-
-/* form */
-.input-form .row {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
 }
 
 input:focus-visible {
