@@ -1,16 +1,14 @@
 <template>
 	<footer>
 		<div class="container">
-			<div class="footer-content-wrapper">
+			<div class="column">
 				<ul>
 					<li><a href="#">会社概要</a></li>
 					<li><a href="#">プライバシーポリシー</a></li>
 				</ul>
-				<small class="copyright">&copy; Restaurant Co.</small>
+				<small class="copyright t-center">&copy; Restaurant Co.</small>
 			</div>
-
 		</div>
-
 	</footer>
 </template>
 

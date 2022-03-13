@@ -31,13 +31,65 @@ input[type="number"]::-webkit-inner-spin-button {
 body {
 	margin: 0px;
 	padding: 0px;
-	font-family: -apple-system, Sans-Serif, 'メイリオ';
+	height: $windowHeight;
+	font-family: -apple-system, BlinkMacSystemFont, Sans-Serif, 'メイリオ';
 	background-color: $bg_color;
 }
 
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.t-center {
+	text-align: center;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+header, footer {
+	height: $windowHeight * 0.1;
+	background-color: $theme_green;
+}
 
 /* header */
+header {
+
+	h1 {
+		line-height: $windowHeight * 0.1;
+		font-weight: normal;
+		font-size: 1.5rem;
+		color: #eee;
+	}
+}
 
 /* main-section */
+.main-section {
+	height: $windowHeight * 0.8;
+}
 
 /* footer */
+footer {
+	color: #eee;
+
+	.column {
+		height: $windowHeight * 0.1;
+		justify-content: center;
+	}
+	
+	li {
+		display: inline-block;
+		margin-right: 20px;
+		font-size: 0.8rem;
+	}
+}

@@ -11,7 +11,7 @@ $breakpoints: (
 	'lg': 'screen and (max-width: #{$lg})'
 );
 
-$headerHeight: 90px;
+$windowHeight: 600px;
 $hoverBorder: 2px solid #aaa;
 
 // mixin

@@ -24345,7 +24345,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container\"><div class=\"footer-content-wrapper\"><ul><li><a href=\"#\">会社概要</a></li><li><a href=\"#\">プライバシーポリシー</a></li></ul><small class=\"copyright\">© Restaurant Co.</small></div></div>", 1);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container\"><div class=\"column\"><ul><li><a href=\"#\">会社概要</a></li><li><a href=\"#\">プライバシーポリシー</a></li></ul><small class=\"copyright t-center\">© Restaurant Co.</small></div></div>", 1);
 
 var _hoisted_2 = [_hoisted_1];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
