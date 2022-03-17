@@ -118,17 +118,47 @@ footer {
 	.number-input,
 	.seat-select-buttons {
 		height: 50%;
+	}
 
-		&.column {
-			justify-content: space-between;
+	.number-input {
+		&:hover,
+		&:active {
+			border: $hoverBorder;
+		}
+
+		&.validNum {
+			border: 3px solid #aaa;
+			border-radius: 5px;
+		}
+
+		&.invalidNum {
+			border: 3px solid rgba($color: red, $alpha: 0.5);
+			border-radius: 5px;
 		}
 	}
 
 	.seat-select-buttons {
+		&.column {
+			justify-content: space-between;
+		}
+
 		.seat-select-button {
+			box-sizing: border-box;
 			margin: 2px 0;
 			padding: 10px 0;
-			font-size: 1rem;	
+			background-color: #fff;
+			border: none;
+			font-size: 1.2rem;
+			
+			&:hover,
+			&:active {
+			border: $hoverBorder;
+			}
+
+			&.selected {
+			border: 3px solid #aaa;
+			border-radius: 5px;
+			}
 		}
 	}
 

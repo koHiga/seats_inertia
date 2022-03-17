@@ -21,12 +21,14 @@
                   <input
                     type="number"
                     v-model="form.guestsCountInput"
-                    v-bind:class="{}"
+                    v-bind:class="[
+						'number-input', 
+						!checkInputNum ? 'invalidNum' : 'validNum'
+					]"
                     autocomplete="off"
-                    class="number-input"
                     required
                   />
-                  <p v-if="!checkInputNum" class="gcInput-message">
+                  <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
                   </p>
                   <p v-else class="input-part-message">

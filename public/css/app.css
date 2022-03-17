@@ -110,14 +110,34 @@ footer li {
 .input-form .seat-select-buttons {
   height: 50%;
 }
-.input-form .number-input.column,
+.input-form .number-input:hover, .input-form .number-input:active {
+  border: 2px solid #aaa;
+}
+.input-form .number-input.validNum {
+  border: 3px solid #aaa;
+  border-radius: 5px;
+}
+.input-form .number-input.invalidNum {
+  border: 3px solid rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+}
 .input-form .seat-select-buttons.column {
   justify-content: space-between;
 }
 .input-form .seat-select-buttons .seat-select-button {
+  box-sizing: border-box;
   margin: 2px 0;
   padding: 10px 0;
-  font-size: 1rem;
+  background-color: #fff;
+  border: none;
+  font-size: 1.2rem;
+}
+.input-form .seat-select-buttons .seat-select-button:hover, .input-form .seat-select-buttons .seat-select-button:active {
+  border: 2px solid #aaa;
+}
+.input-form .seat-select-buttons .seat-select-button.selected {
+  border: 3px solid #aaa;
+  border-radius: 5px;
 }
 .input-form .number-input-suffix {
   max-width: 30%;
