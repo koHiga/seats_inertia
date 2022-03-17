@@ -73,11 +73,6 @@ header {
 	}
 }
 
-/* main-section */
-.main-section {
-	height: $windowHeight * 0.8;
-}
-
 /* footer */
 footer {
 	color: #eee;
@@ -93,3 +88,70 @@ footer {
 		font-size: 0.8rem;
 	}
 }
+
+/* index */
+/* main-section */
+.home {
+	display: flex;
+	height: $windowHeight * 0.8;
+	align-items: center;
+}
+
+.messages-wrapper {
+	height: $mainSectionHeight * 0.2;
+}
+
+.input-form {
+	height: $mainSectionHeight * 0.8;
+
+	.column {
+		height: 100%;
+		justify-content: space-evenly;
+	}
+
+	.number-input-wrapper,
+	.seat-select-buttons-wrapper {
+		max-width: 35%;
+		height: 100%;
+	}
+
+	.number-input,
+	.seat-select-buttons {
+		height: 50%;
+
+		&.column {
+			justify-content: space-between;
+		}
+	}
+
+	.seat-select-buttons {
+		.seat-select-button {
+			margin: 2px 0;
+			padding: 10px 0;
+			font-size: 1rem;	
+		}
+	}
+
+	.number-input-suffix {
+		max-width: 30%;
+		font-size: 1.5rem;
+		margin-left: -20px;
+	}
+
+	.num-and-select-buttons {
+		height: 80%;
+	}
+	
+	.submit-button-wrapper {
+		height: 20%;
+	}
+
+	.input-part-message {
+		font-size: 0.9rem;
+	}
+}
+
+
+
+
+

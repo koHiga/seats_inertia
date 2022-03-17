@@ -68,11 +68,6 @@ header h1 {
   color: #eee;
 }
 
-/* main-section */
-.main-section {
-  height: 480px;
-}
-
 /* footer */
 footer {
   color: #eee;
@@ -85,4 +80,56 @@ footer li {
   display: inline-block;
   margin-right: 20px;
   font-size: 0.8rem;
+}
+
+/* index */
+/* main-section */
+.home {
+  display: flex;
+  height: 480px;
+  align-items: center;
+}
+
+.messages-wrapper {
+  height: 96px;
+}
+
+.input-form {
+  height: 384px;
+}
+.input-form .column {
+  height: 100%;
+  justify-content: space-evenly;
+}
+.input-form .number-input-wrapper,
+.input-form .seat-select-buttons-wrapper {
+  max-width: 35%;
+  height: 100%;
+}
+.input-form .number-input,
+.input-form .seat-select-buttons {
+  height: 50%;
+}
+.input-form .number-input.column,
+.input-form .seat-select-buttons.column {
+  justify-content: space-between;
+}
+.input-form .seat-select-buttons .seat-select-button {
+  margin: 2px 0;
+  padding: 10px 0;
+  font-size: 1rem;
+}
+.input-form .number-input-suffix {
+  max-width: 30%;
+  font-size: 1.5rem;
+  margin-left: -20px;
+}
+.input-form .num-and-select-buttons {
+  height: 80%;
+}
+.input-form .submit-button-wrapper {
+  height: 20%;
+}
+.input-form .input-part-message {
+  font-size: 0.9rem;
 }

@@ -2,66 +2,79 @@
   <app-layout>
     <Head title="Booking Seats -Welcome" />
 
-    <div class="column">
-      <div class="messages-wrapper">
-        <h1>Welcome To Our Shop</h1>
-        <p id="openingMessage">
-          We wan to to know how many people coming together,<br />and our staff
-          will take you to your seat.
-        </p>
+    <section class="home">
+      <div class="container">
+        <div class="column">
+          <div class="messages-wrapper">
+            <h1>Welcome To Our Shop</h1>
+            <p id="openingMessage">
+              We wan to to know how many people coming together,<br />and our
+              staff will take you to your seat.
+            </p>
+          </div>
+
+          <form @submit.prevent="confirm" class="input-form">
+			  <div class="column">
+            <div class="num-and-select-buttons row">
+              <div class="number-input-wrapper">
+                <div class="column">
+                  <input
+                    type="number"
+                    v-model="form.guestsCountInput"
+                    v-bind:class="{}"
+                    autocomplete="off"
+                    class="number-input"
+                    required
+                  />
+                  <p v-if="!checkInputNum" class="gcInput-message">
+                    1から50の整数で入力してください。
+                  </p>
+                  <p v-else class="input-part-message">
+                    お客様の人数をご入力ください。
+                  </p>
+                </div>
+              </div>
+
+              <span class="number-input-suffix">名様</span>
+
+              <div class="seat-select-buttons-wrapper">
+				<div class="column">
+					<div class="seat-select-buttons column">
+					<input
+						type="button"
+						v-for="seatType in seatTypes"
+						v-bind:value="seatType.id"
+						:key="seatType.id"
+						v-on:click="sstBasket"
+						class="seat-select-button"
+					/>
+					</div>
+                  <p v-if="!checkInputNum" class="gcInput-message">
+                    1から50の整数で入力してください。
+                  </p>
+                  <p v-else class="input-part-message">
+                    ご希望の席種をご選択ください。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-button-wrapper t-center">
+              <button
+                :type="submit"
+                :class="{ 'all-set': checkAllSet }"
+                id="submitButton"
+                :disabled="!checkAllSet"
+              >
+                確認
+              </button>
+            </div>
+
+			</div>
+          </form>
+        </div>
       </div>
-
-      <form @submit.prevent="confirm" class="input-form">
-        <div class="row">
-          <div class="gcInput-wrapper">
-            <div class="column">
-              <input
-                type="number"
-                v-model="form.guestsCountInput"
-                v-bind:class="{}"
-                autocomplete="off"
-                class="gcInput"
-                required
-              />
-              <p v-if="!checkInputNum" class="gcInput-message">
-                1から50の整数で入力してください。
-              </p>
-              <p v-else class="gcInput-message">お客様の人数をご入力ください。</p>
-            </div>
-          </div>
-
-          <span class="gc-suffix">名様</span>
-
-          <div class="column">
-            <div class="seat-select-buttons-wrapper">
-              <input
-                type="button"
-                v-for="seatType in seatTypes"
-                v-bind:value="seatType.id"
-                :key="seatType.id"
-                v-on:click="sstBasket"
-                class="seat-select-buttons"
-              />
-              <p v-if="!checkInputNum" class="gcInput-message">
-                1から50の整数で入力してください。
-              </p>
-              <p v-else class="gcInput-message">お客様の人数をご入力ください。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="submit-button-wrapper">
-          <button
-            :type="submit"
-            :class="{ 'all-set': checkAllSet }"
-            id="submitButton"
-            :disabled="!checkAllSet"
-          >
-            確認
-          </button>
-        </div>
-      </form>
-    </div>
+    </section>
   </app-layout>
 </template>
 

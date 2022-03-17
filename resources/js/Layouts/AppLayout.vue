@@ -3,12 +3,7 @@
     <Header></Header>
 
     <!-- Page Content -->
-    <section class="main-section">
-        <div class="container">
-            <slot></slot>
-            
-        </div>
-    </section>
+    <slot></slot>
 
             <!-- Page Footer -->
     <Footer></Footer>
