@@ -103,15 +103,12 @@ footer li {
 }
 .input-form .number-input-wrapper,
 .input-form .seat-select-buttons-wrapper {
-  max-width: 35%;
+  width: 35%;
   height: 100%;
 }
 .input-form .number-input,
 .input-form .seat-select-buttons {
   height: 50%;
-}
-.input-form .number-input:hover, .input-form .number-input:active {
-  border: 2px solid #aaa;
 }
 .input-form .number-input.validNum {
   border: 3px solid #aaa;
@@ -125,15 +122,13 @@ footer li {
   justify-content: space-between;
 }
 .input-form .seat-select-buttons .seat-select-button {
-  box-sizing: border-box;
   margin: 2px 0;
-  padding: 10px 0;
+  height: 25%;
   background-color: #fff;
   border: none;
-  font-size: 1.2rem;
-}
-.input-form .seat-select-buttons .seat-select-button:hover, .input-form .seat-select-buttons .seat-select-button:active {
-  border: 2px solid #aaa;
+  font-size: 1rem;
+  border: 3px solid #fff;
+  border-radius: 5px;
 }
 .input-form .seat-select-buttons .seat-select-button.selected {
   border: 3px solid #aaa;
@@ -142,13 +137,21 @@ footer li {
 .input-form .number-input-suffix {
   max-width: 30%;
   font-size: 1.5rem;
-  margin-left: -20px;
+  margin-left: -30px;
 }
 .input-form .num-and-select-buttons {
   height: 80%;
 }
 .input-form .submit-button-wrapper {
   height: 20%;
+}
+.input-form .submit-button-wrapper .submit-button {
+  width: 30%;
+  height: 70%;
+  background-color: #008031;
+  color: #eee;
+  font-size: 2rem;
+  border: none;
 }
 .input-form .input-part-message {
   font-size: 0.9rem;

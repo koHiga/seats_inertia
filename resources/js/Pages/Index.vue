@@ -45,13 +45,13 @@
 					<input
 						type="button"
 						v-for="seatType in seatTypes"
-						v-bind:value="seatType.id"
+						v-bind:value="seatType.inJP"
 						:key="seatType.id"
 						v-on:click="sstBasket"
 						class="seat-select-button"
 					/>
 					</div>
-                  <p v-if="!checkInputNum" class="gcInput-message">
+                  <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
                   </p>
                   <p v-else class="input-part-message">
@@ -64,7 +64,8 @@
             <div class="submit-button-wrapper t-center">
               <button
                 :type="submit"
-                :class="{ 'all-set': checkAllSet }"
+                :class="[ 'submit-button',
+				{'all-set': checkAllSet} ]"
                 id="submitButton"
                 :disabled="!checkAllSet"
               >
@@ -106,9 +107,9 @@ export default defineComponent({
       }),
 
       seatTypes: [
-        { id: "counter", jp: "カウンター" },
-        { id: "tableSeat", jp: "テーブル席" },
-        { id: "tatamiRoom", jp: "座敷席" },
+        { id: "counter", inJP: "カウンター" },
+        { id: "tableSeat", inJP: "テーブル席" },
+        { id: "tatamiRoom", inJP: "座敷席" },
       ],
     };
   },

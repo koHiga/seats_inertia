@@ -111,7 +111,7 @@ footer {
 
 	.number-input-wrapper,
 	.seat-select-buttons-wrapper {
-		max-width: 35%;
+		width: 35%;
 		height: 100%;
 	}
 
@@ -121,10 +121,6 @@ footer {
 	}
 
 	.number-input {
-		&:hover,
-		&:active {
-			border: $hoverBorder;
-		}
 
 		&.validNum {
 			border: 3px solid #aaa;
@@ -143,17 +139,13 @@ footer {
 		}
 
 		.seat-select-button {
-			box-sizing: border-box;
 			margin: 2px 0;
-			padding: 10px 0;
+			height: 25%;
 			background-color: #fff;
 			border: none;
-			font-size: 1.2rem;
-			
-			&:hover,
-			&:active {
-			border: $hoverBorder;
-			}
+			font-size: 1rem;
+			border: 3px solid #fff;
+			border-radius: 5px;
 
 			&.selected {
 			border: 3px solid #aaa;
@@ -165,7 +157,7 @@ footer {
 	.number-input-suffix {
 		max-width: 30%;
 		font-size: 1.5rem;
-		margin-left: -20px;
+		margin-left: -30px;
 	}
 
 	.num-and-select-buttons {
@@ -174,6 +166,15 @@ footer {
 	
 	.submit-button-wrapper {
 		height: 20%;
+
+		.submit-button {
+			width: 30%;
+			height: 70%;
+			background-color: $theme_green;
+			color: #eee;
+			font-size: 2rem;
+			border: none;
+		}
 	}
 
 	.input-part-message {
