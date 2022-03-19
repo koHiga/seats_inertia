@@ -30,7 +30,7 @@ body {
   margin: 0px;
   padding: 0px;
   height: 600px;
-  font-family: -apple-system, BlinkMacSystemFont, Sans-Serif, "メイリオ";
+  font-family: "SF Pro JP", "SF Pro Text", "SF Pro Icons", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #eeeeee;
 }
 
@@ -63,8 +63,8 @@ header, footer {
 /* header */
 header h1 {
   line-height: 60px;
-  font-weight: normal;
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 1.8rem;
   color: #eee;
 }
 
@@ -92,6 +92,10 @@ footer li {
 
 .messages-wrapper {
   height: 96px;
+  justify-content: flex-end;
+}
+.messages-wrapper h1 {
+  margin-bottom: 10px;
 }
 
 .input-form {

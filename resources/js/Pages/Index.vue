@@ -5,7 +5,7 @@
     <section class="home">
       <div class="container">
         <div class="column">
-          <div class="messages-wrapper">
+          <div class="messages-wrapper column">
             <h1>Welcome To Our Shop</h1>
             <p id="openingMessage">
               We wan to to know how many people coming together,<br />and our
