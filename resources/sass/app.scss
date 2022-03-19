@@ -121,6 +121,10 @@ footer {
 	}
 
 	.number-input {
+		font-size: 5rem;
+		font-family: sans-serif;
+		font-weight: normal;
+		color: #333;
 
 		&.validNum {
 			border: 3px solid #aaa;
@@ -174,6 +178,13 @@ footer {
 			color: #eee;
 			font-size: 2rem;
 			border: none;
+			border-radius: 5px;
+			opacity: 1;
+			transition: opacity 100ms linear;
+
+			&:disabled {
+				opacity: 0.8;
+			}
 		}
 	}
 

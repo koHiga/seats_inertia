@@ -110,6 +110,12 @@ footer li {
 .input-form .seat-select-buttons {
   height: 50%;
 }
+.input-form .number-input {
+  font-size: 5rem;
+  font-family: sans-serif;
+  font-weight: normal;
+  color: #333;
+}
 .input-form .number-input.validNum {
   border: 3px solid #aaa;
   border-radius: 5px;
@@ -152,6 +158,12 @@ footer li {
   color: #eee;
   font-size: 2rem;
   border: none;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 100ms linear;
+}
+.input-form .submit-button-wrapper .submit-button:disabled {
+  opacity: 0.8;
 }
 .input-form .input-part-message {
   font-size: 0.9rem;

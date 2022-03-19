@@ -25957,7 +25957,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return _ctx.form.guestsCountInput = $event;
         }),
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['number-input', !_ctx.checkInputNum ? 'invalidNum' : 'validNum']),
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['number-input', 't-center', !_ctx.checkInputNum ? 'invalidNum' : 'validNum']),
         autocomplete: "off",
         required: ""
       }, null, 2
@@ -25983,7 +25983,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }]),
         id: "submitButton",
         disabled: !_ctx.checkAllSet
-      }, " 確認 ", 10
+      }, " 確 認 ", 10
       /* CLASS, PROPS */
       , _hoisted_19)])])], 32
       /* HYDRATE_EVENTS */

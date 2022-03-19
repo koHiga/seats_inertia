@@ -22,7 +22,8 @@
                     type="number"
                     v-model="form.guestsCountInput"
                     v-bind:class="[
-						'number-input', 
+						'number-input',
+						't-center', 
 						!checkInputNum ? 'invalidNum' : 'validNum'
 					]"
                     autocomplete="off"
@@ -69,7 +70,7 @@
                 id="submitButton"
                 :disabled="!checkAllSet"
               >
-                確認
+                確 認
               </button>
             </div>
 
