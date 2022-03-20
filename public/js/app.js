@@ -25941,7 +25941,7 @@ var _hoisted_17 = {
 var _hoisted_18 = {
   "class": "submit-button-wrapper t-center"
 };
-var _hoisted_19 = ["type", "disabled"];
+var _hoisted_19 = ["type"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -25985,8 +25985,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['submit-button', {
           'all-set': _ctx.checkAllSet
         }]),
-        id: "submitButton",
-        disabled: !_ctx.checkAllSet
+        id: "submitButton"
       }, " 確 認 ", 10
       /* CLASS, PROPS */
       , _hoisted_19)])])], 32

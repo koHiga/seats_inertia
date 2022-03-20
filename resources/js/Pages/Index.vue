@@ -68,7 +68,6 @@
                 :class="[ 'submit-button',
 				{'all-set': checkAllSet} ]"
                 id="submitButton"
-                :disabled="!checkAllSet"
               >
                 確 認
               </button>
