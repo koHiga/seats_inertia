@@ -131,15 +131,17 @@ footer {
 		font-family: sans-serif;
 		font-weight: normal;
 		color: #333;
+		box-shadow: inset 0px 0px 6px #333;
 
 		&.validNum {
-			border: 3px solid #aaa;
+			border: none;
 			border-radius: 5px;
 		}
 
 		&.invalidNum {
-			border: 3px solid rgba($color: red, $alpha: 0.5);
+			box-shadow: inset 0px 0px 6px red;
 			border-radius: 5px;
+			border: none;
 		}
 	}
 
@@ -148,7 +150,19 @@ footer {
 			justify-content: space-between;
 		}
 
-		.neumorphism {
+		.seat-select-button {
+			height: 30%;
+			font-size: 1rem;
+			background-color: rgb(255, 255, 255);
+			border: none;
+			border-radius: 5px;
+			transition: box-shadow 0.5s;
+			box-shadow:
+				0px 0px 6px rgba(63, 63, 63, 0.5),
+				0px 0px 6px rgba(238, 238, 238, 0.9),
+				inset 0px 0px 6px transparent,
+				inset 0px 0px 6px transparent;
+
 			&::after {
 				content: '';
 				display: block;
@@ -159,29 +173,14 @@ footer {
 				width: 100%;
 				height: 100%;
 			}
-			margin: 2px 0;
-			height: 25%;
-			background-color: $bg_color;
 
-			.seat-select-button {
-				
-				font-size: 1rem;
-				border: none;
-				border-radius: 5px;
-
-				/* for neumorphism */
-				background-color: $bg_color;
-				transition: box-shadow 0.5s;
-				box-shadow: 
-					10px 10px 30px rgba($color: $bg_color, $alpha: 0.5),
-					-10px -10px 30px rgba($color: $bg_color, $alpha: 0.9),
-					inset 10px 10px 30px transparent,
-					inset -10px -10px 30px transparent;
-
-				&.selected {
-				border: 3px solid #aaa;
-				border-radius: 5px;
-				}
+			&:hover,
+			&.selected {
+				box-shadow:
+					0px 0px 6px transparent,
+					0px 0px 6px transparent,
+					inset 0px 0px 6px rgba(63, 63, 63, 0.5),
+					inset 0px 0px 6px rgba(238, 238, 238, 0.9);
 			}
 		}
 	}
@@ -211,7 +210,7 @@ footer {
 			transition: opacity 100ms linear;
 
 			&:disabled {
-				opacity: 0.8;
+				opacity: 0.5;
 			}
 		}
 	}
@@ -220,8 +219,5 @@ footer {
 		font-size: 0.9rem;
 	}
 }
-
-
-
 
 

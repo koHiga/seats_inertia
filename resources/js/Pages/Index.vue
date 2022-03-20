@@ -43,18 +43,14 @@
               <div class="seat-select-buttons-wrapper">
 				<div class="column">
 					<div class="seat-select-buttons column">
-						<div 
-							class="neumorphism"
+						<input 
+							type="button"
 							v-for="seatType in seatTypes"
 							:key="seatType.id"
-							>
-							<input
-								type="button"
-								v-bind:value="seatType.inJP"
-								v-on:click="sstBasket"
-								class="seat-select-button"
-							/>
-					</div>
+							v-bind:value="seatType.inJP"
+							v-on:click="sstBasket"
+							class="seat-select-button neumorphism"
+						/>
 					</div>
                   <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。

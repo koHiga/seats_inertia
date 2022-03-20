@@ -25967,19 +25967,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 2
       /* CLASS */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.guestsCountInput]]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_9, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_10, " お客様の人数をご入力ください。 "))])]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          "class": "neumorphism",
-          key: seatType.id
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
           type: "button",
+          key: seatType.id,
           value: seatType.inJP,
           onClick: _cache[1] || (_cache[1] = function () {
             return _ctx.sstBasket && _ctx.sstBasket.apply(_ctx, arguments);
           }),
-          "class": "seat-select-button"
+          "class": "seat-select-button neumorphism"
         }, null, 8
         /* PROPS */
-        , _hoisted_15)]);
+        , _hoisted_15);
       }), 128
       /* KEYED_FRAGMENT */
       ))]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_16, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_17, " ご希望の席種をご選択ください。 "))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
