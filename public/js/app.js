@@ -22840,13 +22840,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           val1 = _ref2[0],
           val2 = _ref2[1];
 
-      // val1: InputNum validated
-      if (val1 > 0 && val1 <= 50) {
+      // val1: InputNum's validation
+      if (val1 > 0 && val1 <= 50 || val1 == '') {
         console.log(val1, val2);
-        _this.checkInputNum = true;
+        _this.checkInputNum = true; // val2: selectedSetTypes' validattion
 
         if (val2.length >= 1 && val2.length <= 3) {
-          _this.checkAllSet = true;
+          if (val1 != '') {
+            _this.checkAllSet = true;
+          } else {
+            _this.checkAllSet = false;
+          }
         } else {
           _this.checkAllSet = false;
         }
@@ -22855,7 +22859,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         // make confirm button active.
         console.log(val1, val2);
         _this.checkInputNum = false;
-        _this.checkAllSet = false; // val2: selectedSetTypes is validattion
+        _this.checkAllSet = false;
       }
     }, {
       deep: true
@@ -25883,9 +25887,9 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "messages-wrapper column"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Welcome To Our Shop"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "当店へようこそ"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   id: "openingMessage"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" We wan to to know how many people coming together,"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("and our staff will take you to your seat. ")])], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 空席を確認いたしますので、お客さまの人数と"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ご希望の席の種類をご選択ください。 ")])], -1
 /* HOISTED */
 );
 
@@ -25963,17 +25967,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 2
       /* CLASS */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.guestsCountInput]]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_9, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_10, " お客様の人数をご入力ください。 "))])]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          "class": "neumorphism",
+          key: seatType.id
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
           type: "button",
           value: seatType.inJP,
-          key: seatType.id,
           onClick: _cache[1] || (_cache[1] = function () {
             return _ctx.sstBasket && _ctx.sstBasket.apply(_ctx, arguments);
           }),
           "class": "seat-select-button"
         }, null, 8
         /* PROPS */
-        , _hoisted_15);
+        , _hoisted_15)]);
       }), 128
       /* KEYED_FRAGMENT */
       ))]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_16, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_17, " ご希望の席種をご選択ください。 "))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {

@@ -102,7 +102,8 @@ footer {
 	justify-content: flex-end;
 
 	h1 {
-		margin-bottom: 10px;
+		font-weight: normal;
+		font-size: 1.5rem;
 	}
 }
 
@@ -126,7 +127,7 @@ footer {
 	}
 
 	.number-input {
-		font-size: 5rem;
+		font-size: 3rem;
 		font-family: sans-serif;
 		font-weight: normal;
 		color: #333;
@@ -147,18 +148,40 @@ footer {
 			justify-content: space-between;
 		}
 
-		.seat-select-button {
+		.neumorphism {
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
 			margin: 2px 0;
 			height: 25%;
-			background-color: #fff;
-			border: none;
-			font-size: 1rem;
-			border: 3px solid #fff;
-			border-radius: 5px;
+			background-color: $bg_color;
 
-			&.selected {
-			border: 3px solid #aaa;
-			border-radius: 5px;
+			.seat-select-button {
+				
+				font-size: 1rem;
+				border: none;
+				border-radius: 5px;
+
+				/* for neumorphism */
+				background-color: $bg_color;
+				transition: box-shadow 0.5s;
+				box-shadow: 
+					10px 10px 30px rgba($color: $bg_color, $alpha: 0.5),
+					-10px -10px 30px rgba($color: $bg_color, $alpha: 0.9),
+					inset 10px 10px 30px transparent,
+					inset -10px -10px 30px transparent;
+
+				&.selected {
+				border: 3px solid #aaa;
+				border-radius: 5px;
+				}
 			}
 		}
 	}

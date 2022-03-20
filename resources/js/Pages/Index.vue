@@ -6,10 +6,10 @@
       <div class="container">
         <div class="column">
           <div class="messages-wrapper column">
-            <h1>Welcome To Our Shop</h1>
+            <h1>当店へようこそ</h1>
             <p id="openingMessage">
-              We wan to to know how many people coming together,<br />and our
-              staff will take you to your seat.
+              空席を確認いたしますので、お客さまの人数と<br />
+			  ご希望の席の種類をご選択ください。
             </p>
           </div>
 
@@ -43,14 +43,18 @@
               <div class="seat-select-buttons-wrapper">
 				<div class="column">
 					<div class="seat-select-buttons column">
-					<input
-						type="button"
-						v-for="seatType in seatTypes"
-						v-bind:value="seatType.inJP"
-						:key="seatType.id"
-						v-on:click="sstBasket"
-						class="seat-select-button"
-					/>
+						<div 
+							class="neumorphism"
+							v-for="seatType in seatTypes"
+							:key="seatType.id"
+							>
+							<input
+								type="button"
+								v-bind:value="seatType.inJP"
+								v-on:click="sstBasket"
+								class="seat-select-button"
+							/>
+					</div>
 					</div>
                   <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
@@ -122,13 +126,19 @@ export default defineComponent({
         this.$data.form.selectedSeatTypes,
       ],
       ([val1, val2]) => {
-        // val1: InputNum validated
-        if (val1 > 0 && val1 <= 50) {
+        // val1: InputNum's validation
+        if (val1 > 0 && val1 <= 50 || val1 == '') {
           console.log(val1, val2);
           this.checkInputNum = true;
 
+		  // val2: selectedSetTypes' validattion
           if (val2.length >= 1 && val2.length <= 3) {
-            this.checkAllSet = true;
+
+			  if (val1 != '') {
+				this.checkAllSet = true;
+			  } else {
+				this.checkAllSet = false;
+			  }
           } else {
             this.checkAllSet = false;
           }
@@ -140,7 +150,7 @@ export default defineComponent({
           this.checkInputNum = false;
           this.checkAllSet = false;
 
-          // val2: selectedSetTypes is validattion
+          
         }
       },
       {
