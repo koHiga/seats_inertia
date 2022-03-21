@@ -162,6 +162,7 @@ export default defineComponent({
         event.target.classList.remove("selected");
       } else {
         this.form.selectedSeatTypes.push(event.target.value);
+		console.log(event);
         event.target.classList.add("selected");
       }
       console.log(this.form.selectedSeatTypes);
