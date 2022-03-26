@@ -48,7 +48,7 @@
 							v-for="seatType in seatTypes"
 							:key="seatType.id"
 							v-bind:value="seatType.inJP"
-							v-on:click="sstBasket"
+							v-on:click="sstBasket($event, seatType)"
 							class="seat-select-button neumorphism"
 						/>
 					</div>
@@ -123,7 +123,7 @@ export default defineComponent({
       ([val1, val2]) => {
         // val1: InputNum's validation
         if (val1 > 0 && val1 <= 50 || val1 == '') {
-          console.log(val1, val2);
+          //console.log(val1, val2);
           this.checkInputNum = true;
 
 		  // val2: selectedSetTypes' validattion
@@ -141,7 +141,7 @@ export default defineComponent({
           // When input number is valid and any of seatType is selected,
           // make confirm button active.
 
-          console.log(val1, val2);
+          //console.log(val1, val2);
           this.checkInputNum = false;
           this.checkAllSet = false;
 
@@ -155,14 +155,14 @@ export default defineComponent({
   },
 
   methods: {
-    sstBasket(event) {
-      if (this.form.selectedSeatTypes.includes(event.target.value)) {
-        let idx = this.form.selectedSeatTypes.indexOf(event.target.value);
+    sstBasket(event, seatType) {
+      if (this.form.selectedSeatTypes.includes(seatType)) {
+        let idx = this.form.selectedSeatTypes.indexOf(seatType);
         this.form.selectedSeatTypes.splice(idx, 1);
         event.target.classList.remove("selected");
       } else {
-        this.form.selectedSeatTypes.push(event.target.value);
-		console.log(event);
+        this.form.selectedSeatTypes.push(seatType);
+		//console.log(seatType);
         event.target.classList.add("selected");
       }
       console.log(this.form.selectedSeatTypes);

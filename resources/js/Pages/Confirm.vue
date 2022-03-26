@@ -7,7 +7,9 @@
 	<h1>Confirm</h1>
 	<div>
 		<p>{{ guestsCountInput }}</p>
-        <p>{{ selectedSeatTypes }}</p>
+		<div v-for="selectedSeatType in selectedSeatTypes">
+			{{ selectedSeatType.inJP }}
+		</div>
 	</div>
     </div>
 </section>
@@ -42,11 +44,6 @@
             return {
                 guestsCountInput: this.request.guestsCountInput,
                 selectedSeatTypes: this.request.selectedSeatTypes,
-                seatTypes: [
-                    {id: 'counter', jp: 'カウンター'},
-                    {id: 'tableSeat', jp: 'テーブル席'},
-                    {id: 'tatamiRoom', jp: '座敷席'},
-                ],
             }
         },
 

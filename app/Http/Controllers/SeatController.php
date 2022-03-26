@@ -58,11 +58,11 @@ class SeatController extends Controller
 			$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', 'counter')->first();
 			//dd($selectedSeat);
 
-			array_push($maxGuestsPerSeatBySelectedSeats, [$selectedSeat => $maxGuests->maxGuestsPerSeat]);
+			array_push($maxGuestsPerSeatBySelectedSeats, [$selectedSeat['id'] => $maxGuests->maxGuestsPerSeat]);
 
 			// 席種の空席の数をKeyValuePairとして配列に追加
 			$remaining = $seat::select('remainingSeats')->where('seatType', 'counter')->first();
-			array_push($remainingPerSeatTypes, [$selectedSeat => $remaining->remainingSeats]);
+			array_push($remainingPerSeatTypes, [$selectedSeat['id'] => $remaining->remainingSeats]);
 
 			// お客さんの人数と、空席の数及びその席種の最大定員を掛けた数を比較して
 			// 後者が前者を上回らない場合に、availabilityをtrueとするKeyValuePairを配列に追加
@@ -70,7 +70,7 @@ class SeatController extends Controller
 			if ($guestsCount <= $maxPeopleByRemainingSeat) {
 
 				// 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
-				array_push($selectedSeatsAvailabilities, [$selectedSeat => true]);
+				array_push($selectedSeatsAvailabilities, [$selectedSeat['id'] => true]);
 
 				// 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
 				// 席種の最大定員からお客さんの数を引いて余る数
@@ -78,12 +78,12 @@ class SeatController extends Controller
 
 				switch ($guestsCount) {
 					case $guestsCount % $maxGuests->maxGuestsPerSeat == 0:
-						array_push($prioritizedOrderForGuidance, [$selectedSeat => 0]);
+						array_push($prioritizedOrderForGuidance, [$selectedSeat['id'] => 0]);
 						break;
 
 					case $guestsCount % $maxGuests->maxGuestsPerSeat != 0:
 						$remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
-						array_push($prioritizedOrderForGuidance, [$selectedSeat => $remainOfOneSeatType]);
+						array_push($prioritizedOrderForGuidance, [$selectedSeat['id'] => $remainOfOneSeatType]);
 						break;
 
 					default:
@@ -91,7 +91,7 @@ class SeatController extends Controller
 						break;
 				}
 			} else {
-				array_push($selectedSeatsAvailabilities, [$selectedSeat => false]);
+				array_push($selectedSeatsAvailabilities, [$selectedSeat['id'] => false]);
 			};
 		}
 
@@ -100,7 +100,7 @@ class SeatController extends Controller
 			return $v1 < $v2;
 		});
 
-		dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
+		//dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
 
 
 		return Inertia::render('Confirm', [
