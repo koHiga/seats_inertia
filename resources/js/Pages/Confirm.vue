@@ -8,7 +8,7 @@
 	<div>
 		<p>{{ guestsCountInput }}</p>
 		<div v-for="selectedSeatType in selectedSeatTypes">
-			{{ selectedSeatType.inJP }}
+			{{ selectedSeatType.id }}
 		</div>
 	</div>
     </div>

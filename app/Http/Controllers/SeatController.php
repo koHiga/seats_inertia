@@ -54,14 +54,14 @@ class SeatController extends Controller
 
 		foreach ($selectedSeats as $selectedSeat) {
 
-			// 席種の最大定員をKeyValuePairとして配列に追加
-			$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', 'counter')->first();
+			// 席種の最大定員をKeyValuePairとして配列に追加  
+			$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', $selectedSeat['id'])->first();
 			//dd($selectedSeat);
 
 			array_push($maxGuestsPerSeatBySelectedSeats, [$selectedSeat['id'] => $maxGuests->maxGuestsPerSeat]);
 
 			// 席種の空席の数をKeyValuePairとして配列に追加
-			$remaining = $seat::select('remainingSeats')->where('seatType', 'counter')->first();
+			$remaining = $seat::select('remainingSeats')->where('seatType', $selectedSeat['id'])->first();
 			array_push($remainingPerSeatTypes, [$selectedSeat['id'] => $remaining->remainingSeats]);
 
 			// お客さんの人数と、空席の数及びその席種の最大定員を掛けた数を比較して
@@ -100,7 +100,7 @@ class SeatController extends Controller
 			return $v1 < $v2;
 		});
 
-		//dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
+		dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
 
 
 		return Inertia::render('Confirm', [
