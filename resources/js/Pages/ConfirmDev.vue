@@ -1,9 +1,28 @@
 <template>
-  <app-layout>
-    <Head title="Booking Seats -Welcome" />
+<app-layout>
+    <Head title="Booking Seats -Confirm" />
 
-    
-  </app-layout>
+<section class="confirm">
+	<div class="container">
+		<div class="column">
+          <div class="messages-wrapper column">
+			<h1>Confirm</h1>
+			<p>よろしければ、&#123;&#123; prioritizedSeatType &#125;&#125;にご案内いたします。</p>
+		  </div>
+		</div>
+
+	<div>
+		<p>{{ guestsCountInput }}</p>
+		<div v-for="selectedSeatType in selectedSeatTypes">
+			{{ selectedSeatType.id }}
+		</div>
+	</div>
+    </div>
+</section>
+        <!-- DEV ONLY: show data passed by SeatController -->
+            
+        <!-- DEV ONLY: end -->
+</app-layout>
 </template>
 
 <script>
@@ -25,6 +44,15 @@ export default defineComponent({
 
   data() {
     return {
+
+		// values below are only for developement
+		guestsCountInput: 5,
+        selectedSeatTypes: [
+        	{ id: "counter", inJP: "カウンター" },
+        	{ id: "tableSeat", inJP: "テーブル席" },
+        	{ id: "tatamiRoom", inJP: "座敷席" },
+		],
+
     };
   },
 

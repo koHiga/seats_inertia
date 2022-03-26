@@ -22,6 +22,16 @@ class SeatController extends Controller
 		return Inertia::render('Index');
 	}
 
+	/*
+	 * Dev only: Confirm view editing
+	 * 
+	 * @return \Illuminate\Http\Response
+	*/
+	public function confirmDev()
+	{
+		return Inertia::render(('ConfirmDev'));
+	}
+
 	/**
 	 * Confirmation of input and seleted seats are available or not.
 	 *
