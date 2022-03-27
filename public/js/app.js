@@ -22766,20 +22766,40 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       // values below are only for developement
-      guestsCountInput: 5,
-      selectedSeatTypes: [{
-        id: "counter",
-        inJP: "カウンター"
-      }, {
-        id: "tableSeat",
-        inJP: "テーブル席"
-      }, {
-        id: "tatamiRoom",
-        inJP: "座敷席"
-      }]
+      form: this.$inertia.form({
+        guestsCountInput: "5",
+        selectedSeatTypes: [// Change these below to typical one passed from SeatController.
+        {
+          id: "counter",
+          inJP: "カウンター"
+        }, {
+          id: "tableSeat",
+          inJP: "テーブル席"
+        }, {
+          id: "tatamiRoom",
+          inJP: "座敷席"
+        }]
+      })
     };
   },
-  methods: {}
+  methods: {
+    sstBasket: function sstBasket(event, seatType) {
+      if (this.form.selectedSeatTypes.includes(seatType)) {
+        var idx = this.form.selectedSeatTypes.indexOf(seatType);
+        this.form.selectedSeatTypes.splice(idx, 1);
+        event.target.classList.remove("selected");
+      } else {
+        this.form.selectedSeatTypes.push(seatType); //console.log(seatType);
+
+        event.target.classList.add("selected");
+      }
+
+      console.log(this.form.selectedSeatTypes);
+    },
+    confirmed: function confirmed() {
+      console.log("confirmed");
+    }
+  }
 }));
 
 /***/ }),
@@ -25875,15 +25895,51 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "container"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_3 = {
   "class": "column"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "messages-wrapper column"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Confirm"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "よろしければ、{{ prioritizedSeatType }}にご案内いたします。")])], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Confirm"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("{{ prioritizedSeatType[0] }}に空席がございますので、"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" よろしければ確定をタップしてください。")])], -1
 /* HOISTED */
 );
 
+var _hoisted_5 = {
+  "class": "column"
+};
+var _hoisted_6 = {
+  "class": "num-and-select-buttons row"
+};
+var _hoisted_7 = {
+  "class": "number-input-wrapper"
+};
+var _hoisted_8 = {
+  "class": "column"
+};
+var _hoisted_9 = {
+  "class": "number-input show-input-number t-center"
+};
+var _hoisted_10 = {
+  "class": "column"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "seat-select-buttons-wrapper"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "column"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "seat-select-buttons show-priority-seat-type"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "column"
+}, "{{ prioritizedOrderForGuidance[0] }}")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "submit-button-wrapper t-center"
+};
+var _hoisted_13 = ["type"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -25893,15 +25949,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
         title: "Booking Seats -Confirm"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.guestsCountInput), 1
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        onSubmit: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return _ctx.confirmed && _ctx.confirmed.apply(_ctx, arguments);
+        }, ["prevent"])),
+        "class": "input-form"
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.guestsCountInput) + "名様 ", 1
       /* TEXT */
-      ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.selectedSeatTypes, function (selectedSeatType) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(selectedSeatType.id), 1
-        /* TEXT */
-        );
-      }), 256
-      /* UNKEYED_FRAGMENT */
-      ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" DEV ONLY: show data passed by SeatController "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" DEV ONLY: end ")];
+      )])])]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        type: _ctx.submit,
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['submit-button', {
+          'all-set': _ctx.checkAllSet
+        }]),
+        id: "submitButton"
+      }, " 確 定 ", 10
+      /* CLASS, PROPS */
+      , _hoisted_13)])])], 32
+      /* HYDRATE_EVENTS */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" DEV ONLY: show data passed by SeatController "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" DEV ONLY: end ")];
     }),
     _: 1
     /* STABLE */
@@ -27251,17 +27316,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
-var _window$document$getE;
-
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+ //const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaApp)({
   title: function title(_title) {
-    return "".concat(_title, " - ").concat(appName);
+    return "".concat(_title);
   },
   resolve: function resolve(name) {
     return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$")("./".concat(name, ".vue"));

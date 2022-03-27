@@ -90,7 +90,7 @@ footer {
 }
 
 /* index */
-/* main-section */
+/* home */
 .home {
 	display: flex;
 	height: $windowHeight * 0.8;
@@ -143,6 +143,12 @@ footer {
 			border-radius: 5px;
 			border: none;
 		}
+
+		// confirm
+		&.show-input-number {
+			background-color: #eee;
+			box-shadow: none;
+		}
 	}
 
 	.seat-select-buttons {
@@ -181,6 +187,16 @@ footer {
 					0px 0px 6px transparent,
 					inset 0px 0px 6px rgba(63, 63, 63, 0.5),
 					inset 0px 0px 6px rgba(238, 238, 238, 0.9);
+			}
+		}
+
+		&.show-priority-seat-type {
+
+			p {
+				font-size: 3rem;
+				font-family: sans-serif;
+				font-weight: normal;
+				color: #333;
 			}
 		}
 	}
@@ -243,4 +259,4 @@ footer {
 	}
 }
 
-
+/* confirm */

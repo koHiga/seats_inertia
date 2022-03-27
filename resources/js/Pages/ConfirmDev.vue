@@ -7,16 +7,46 @@
 		<div class="column">
           <div class="messages-wrapper column">
 			<h1>Confirm</h1>
-			<p>よろしければ、&#123;&#123; prioritizedSeatType &#125;&#125;にご案内いたします。</p>
+			<p>&#123;&#123; prioritizedSeatType[0] &#125;&#125;に空席がございますので、<br />
+			よろしければ確定をタップしてください。</p>
 		  </div>
-		</div>
 
-	<div>
-		<p>{{ guestsCountInput }}</p>
-		<div v-for="selectedSeatType in selectedSeatTypes">
-			{{ selectedSeatType.id }}
+		  <form @submit.prevent="confirmed" class="input-form">
+			  <div class="column">
+            <div class="num-and-select-buttons row">
+              <div class="number-input-wrapper">
+                <div class="column">
+                  <div class="number-input show-input-number t-center">
+										<p class="column">
+											{{ form.guestsCountInput }}名様
+										</p>
+									</div>
+                </div>
+              </div>
+
+              <div class="seat-select-buttons-wrapper">
+								<div class="column">
+									<div class="seat-select-buttons show-priority-seat-type">
+										<p class="column">&#123;&#123; prioritizedOrderForGuidance[0] &#125;&#125;</p>
+									</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-button-wrapper t-center">
+              <button
+                :type="submit"
+                :class="[ 'submit-button',
+				{'all-set': checkAllSet} ]"
+                id="submitButton"
+              >
+                確 定
+              </button>
+            </div>
+
+			</div>
+          </form>
 		</div>
-	</div>
     </div>
 </section>
         <!-- DEV ONLY: show data passed by SeatController -->
@@ -46,16 +76,37 @@ export default defineComponent({
     return {
 
 		// values below are only for developement
-		guestsCountInput: 5,
-        selectedSeatTypes: [
-        	{ id: "counter", inJP: "カウンター" },
-        	{ id: "tableSeat", inJP: "テーブル席" },
-        	{ id: "tatamiRoom", inJP: "座敷席" },
-		],
+		form: this.$inertia.form({
+        	guestsCountInput: "5",
+        	selectedSeatTypes: [
+						// Change these below to typical one passed from SeatController.
+						{ id: "counter", inJP: "カウンター" },
+        		{ id: "tableSeat", inJP: "テーブル席" },
+        		{ id: "tatamiRoom", inJP: "座敷席" },
+					],
+        }),
 
     };
   },
 
-  methods: {},
+  methods: {
+
+	  sstBasket(event, seatType) {
+      if (this.form.selectedSeatTypes.includes(seatType)) {
+        let idx = this.form.selectedSeatTypes.indexOf(seatType);
+        this.form.selectedSeatTypes.splice(idx, 1);
+        event.target.classList.remove("selected");
+      } else {
+        this.form.selectedSeatTypes.push(seatType);
+		//console.log(seatType);
+        event.target.classList.add("selected");
+      }
+      console.log(this.form.selectedSeatTypes);
+    },
+	  
+	  confirmed() {
+		  console.log("confirmed")
+	  },
+  },
 });
 </script>

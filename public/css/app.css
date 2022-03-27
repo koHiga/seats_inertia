@@ -83,7 +83,7 @@ footer li {
 }
 
 /* index */
-/* main-section */
+/* home */
 .home {
   display: flex;
   height: 480px;
@@ -131,6 +131,10 @@ footer li {
   border-radius: 5px;
   border: none;
 }
+.input-form .number-input.show-input-number {
+  background-color: #eee;
+  box-shadow: none;
+}
 .input-form .seat-select-buttons.column {
   justify-content: space-between;
 }
@@ -155,6 +159,12 @@ footer li {
 }
 .input-form .seat-select-buttons .seat-select-button:active, .input-form .seat-select-buttons .seat-select-button.selected {
   box-shadow: 0px 0px 6px transparent, 0px 0px 6px transparent, inset 0px 0px 6px rgba(63, 63, 63, 0.5), inset 0px 0px 6px rgba(238, 238, 238, 0.9);
+}
+.input-form .seat-select-buttons.show-priority-seat-type p {
+  font-size: 3rem;
+  font-family: sans-serif;
+  font-weight: normal;
+  color: #333;
 }
 .input-form .number-input-suffix {
   max-width: 30%;
@@ -197,3 +207,5 @@ footer li {
 .input-form .input-part-message {
   font-size: 0.9rem;
 }
+
+/* confirm */
