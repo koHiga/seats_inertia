@@ -37,7 +37,7 @@
               <button
                 :type="submit"
                 :class="[ 'submit-button',
-				{'all-set': checkAllSet} ]"
+									{'all-set': checkAllSet} ]"
                 id="submitButton"
               >
                 確 定
@@ -63,7 +63,7 @@ import Header from "../Layouts/Header.vue";
 import Footer from "../Layouts/Footer.vue";
 
 export default defineComponent({
-  //props: ["request", "seat"],
+  //props: ["request", "seat", "prioritizedOrderForGuidance"],
 
   components: {
     Head,
@@ -90,19 +90,6 @@ export default defineComponent({
   },
 
   methods: {
-
-	  sstBasket(event, seatType) {
-      if (this.form.selectedSeatTypes.includes(seatType)) {
-        let idx = this.form.selectedSeatTypes.indexOf(seatType);
-        this.form.selectedSeatTypes.splice(idx, 1);
-        event.target.classList.remove("selected");
-      } else {
-        this.form.selectedSeatTypes.push(seatType);
-		//console.log(seatType);
-        event.target.classList.add("selected");
-      }
-      console.log(this.form.selectedSeatTypes);
-    },
 	  
 	  confirmed() {
 		  console.log("confirmed")

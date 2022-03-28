@@ -110,12 +110,13 @@ class SeatController extends Controller
 			return $v1 < $v2;
 		});
 
-		dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
+		//dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
 
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
-			'seat' => $seat
+			'seat' => $seat,
+			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
 		]);
 	}
 
