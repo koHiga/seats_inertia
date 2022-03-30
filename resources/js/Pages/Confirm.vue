@@ -27,7 +27,7 @@
               <div class="seat-select-buttons-wrapper">
 				<div class="column">
 					<div class="seat-select-buttons show-priority-seat-type">
-						<p class="column">&#123;&#123; prioritizedOrderForGuidance[0] &#125;&#125;</p>
+						<p class="column">{{ theValue }}</p>
 					</div>
                 </div>
               </div>
@@ -37,12 +37,17 @@
               <button
                 :type="submit"
                 :class="[ 'submit-button',
-									{'all-set': checkAllSet} ]"
+					{'all-set': checkAllSet} 
+				]"
                 id="submitButton"
               >
                 確 定
               </button>
+
+			  <!-- Debug -->
+<button type="button" v-on:click="showValue">showValue</button>
             </div>
+
 
 			</div>
           </form>
@@ -82,18 +87,17 @@ export default defineComponent({
 		// values below are only for developement
 		form: this.$inertia.form({
         	guestsCountInput: this.request.guestsCountInput,
-        	selectedSeatTypes: [
-						// Change these below to typical one passed from SeatController.
-						{ id: "counter", inJP: "カウンター" },
-        		{ id: "tableSeat", inJP: "テーブル席" },
-        		{ id: "tatamiRoom", inJP: "座敷席" },
-					],
+        	selectedSeatTypes: this.request.selectedSeatTypes,
         }),
 
     };
   },
 
   methods: {
+
+	  showValue() {
+		  console.log(this.prioritizedOrderForGuidance[0])
+	  },
 	  
 	  confirmed() {
 		  console.log("confirmed")

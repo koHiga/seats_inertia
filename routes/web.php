@@ -21,13 +21,8 @@ use App\Http\Controllers\SeatController;
 Route::get('/', [SeatController::class, 'index'])
 	->name('index');
 
-// Dev only: Confirm vue editing
-Route::get('/confirmDev', [SeatController::class, 'confirmDev'])->name("confirmDev");
-
 // Custom root
 Route::post('/confirm', [SeatController::class, 'confirm'])->name("confirm");
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return Inertia::render('Dashboard');
