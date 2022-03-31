@@ -70,7 +70,8 @@ import Footer from "../Layouts/Footer.vue";
 export default defineComponent({
   props: [
 	  "request", 
-	  "seat", 
+	  "seat",
+	  "seatTypes",
 	  "prioritizedOrderForGuidance"
 	],
 
@@ -90,13 +91,14 @@ export default defineComponent({
         	selectedSeatTypes: this.request.selectedSeatTypes,
         }),
 
+		seatTypes: this.seatTypes,
     };
   },
 
   methods: {
 
 	  showValue() {
-		  console.log(this.prioritizedOrderForGuidance[0])
+		  console.log(this.seatTypes)
 	  },
 	  
 	  confirmed() {

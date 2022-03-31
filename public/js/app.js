@@ -22715,7 +22715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  props: ["request", "seat", "prioritizedOrderForGuidance"],
+  props: ["request", "seat", "seatTypes", "prioritizedOrderForGuidance"],
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -22728,12 +22728,13 @@ __webpack_require__.r(__webpack_exports__);
       form: this.$inertia.form({
         guestsCountInput: this.request.guestsCountInput,
         selectedSeatTypes: this.request.selectedSeatTypes
-      })
+      }),
+      seatTypes: this.seatTypes
     };
   },
   methods: {
     showValue: function showValue() {
-      console.log(this.prioritizedOrderForGuidance[0]);
+      console.log(this.seatTypes);
     },
     confirmed: function confirmed() {
       console.log("confirmed");
@@ -22803,6 +22804,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  props: ["seatTypes"],
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -22813,20 +22815,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     return {
       checkInputNum: true,
       checkAllSet: false,
+      seatTypes: this.seatTypes,
       form: this.$inertia.form({
         guestsCountInput: "",
         selectedSeatTypes: []
-      }),
-      seatTypes: [{
-        id: "counter",
-        inJP: "カウンター"
-      }, {
-        id: "tableSeat",
-        inJP: "テーブル席"
-      }, {
-        id: "tatamiRoom",
-        inJP: "座敷席"
-      }]
+      })
     };
   },
   created: function created() {

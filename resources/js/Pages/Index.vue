@@ -89,28 +89,29 @@ import Header from "../Layouts/Header.vue";
 import Footer from "../Layouts/Footer.vue";
 
 export default defineComponent({
-  components: {
-    Head,
-    AppLayout,
-    Header,
-    Footer,
-  },
+
+	props: [
+		"seatTypes",
+	],
+
+	components: {
+		Head,
+		AppLayout,
+		Header,
+		Footer,
+  	},
 
   data() {
     return {
       checkInputNum: true,
       checkAllSet: false,
 
+	  seatTypes: this.seatTypes,
+
       form: this.$inertia.form({
         guestsCountInput: "",
         selectedSeatTypes: [],
       }),
-
-      seatTypes: [
-        { id: "counter", inJP: "カウンター" },
-        { id: "tableSeat", inJP: "テーブル席" },
-        { id: "tatamiRoom", inJP: "座敷席" },
-      ],
     };
   },
 

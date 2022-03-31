@@ -16,10 +16,17 @@ class SeatController extends Controller
 	 */
 	public function index()
 	{
+		$seatTypes = [
+			['id' => 'counter', 'inJP' => 'カウンター'],
+			['id' => 'tableSeat', 'inJP' => 'テーブル席'],
+			['id' => 'tatamiRoom', 'inJP' => '座敷席']
+		];
 		// データベーステーブルを確認するメソッド
 		//dd(Seat::all());
 		// Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
-		return Inertia::render('Index');
+		return Inertia::render('Index', [
+			'seatTypes' => $seatTypes
+		]);
 	}
 
 	/**
@@ -39,6 +46,12 @@ class SeatController extends Controller
 
 		$guestsCount = $request->guestsCountInput;
 		$selectedSeats = $request->selectedSeatTypes;
+
+		$seatTypes = [
+			['id' => 'counter', 'inJP' => 'カウンター'],
+			['id' => 'tableSeat', 'inJP' => 'テーブル席'],
+			['id' => 'tatamiRoom', 'inJP' => '座敷席']
+		];
 
 		// array([ 選択された席種 => その席種の最大定員 ])
 		$maxGuestsPerSeatBySelectedSeats = [];
@@ -106,6 +119,7 @@ class SeatController extends Controller
 		return Inertia::render('Confirm', [
 			'request' => $request,
 			'seat' => $seat,
+			'seatTypes' => $seatTypes,
 			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
 		]);
 	}
