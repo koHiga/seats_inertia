@@ -103,10 +103,14 @@ export default defineComponent({
 
   data() {
     return {
+
+		seatTypes: [
+			{'id': 'counter', 'inJP': 'カウンター'},
+			{'id': 'tableSeat', 'inJP': 'テーブル席'},
+			{'id': 'tatamiRoom', 'inJP': '座敷席'}
+		],
       checkInputNum: true,
       checkAllSet: false,
-
-	  seatTypes: this.seatTypes,
 
       form: this.$inertia.form({
         guestsCountInput: "",

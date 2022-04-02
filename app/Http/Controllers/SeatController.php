@@ -16,17 +16,10 @@ class SeatController extends Controller
 	 */
 	public function index()
 	{
-		$seatTypes = [
-			['id' => 'counter', 'inJP' => 'カウンター'],
-			['id' => 'tableSeat', 'inJP' => 'テーブル席'],
-			['id' => 'tatamiRoom', 'inJP' => '座敷席']
-		];
 		// データベーステーブルを確認するメソッド
 		//dd(Seat::all());
 		// Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
-		return Inertia::render('Index', [
-			'seatTypes' => $seatTypes
-		]);
+		return Inertia::render('Index');
 	}
 
 	/**
@@ -47,12 +40,6 @@ class SeatController extends Controller
 		$guestsCount = $request->guestsCountInput;
 		$selectedSeats = $request->selectedSeatTypes;
 
-		$seatTypes = [
-			['id' => 'counter', 'inJP' => 'カウンター'],
-			['id' => 'tableSeat', 'inJP' => 'テーブル席'],
-			['id' => 'tatamiRoom', 'inJP' => '座敷席']
-		];
-
 		// array([ 選択された席種 => その席種の最大定員 ])
 		$maxGuestsPerSeatBySelectedSeats = [];
 
@@ -65,17 +52,23 @@ class SeatController extends Controller
 		// array([ 選択された席種 => 席種の最大定員の余り ]) : 余りの少ない順
 		$prioritizedOrderForGuidance = [];
 
+		$selectedSeatsPropsAdd = [];
+
 		foreach ($selectedSeats as $selectedSeat) {
 
-			// 席種の最大定員をKeyValuePairとして配列に追加  
+			// 席種の最大定員をKeyValuePairとして配列に追加
 			$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', $selectedSeat['id'])->first();
-			//dd($selectedSeat);
 
-			array_push($maxGuestsPerSeatBySelectedSeats, [$selectedSeat['id'] => $maxGuests->maxGuestsPerSeat]);
+			$selectedSeat['maxGuests'] = $maxGuests->maxGuestsPerSeat;
+
+			array_push($maxGuestsPerSeatBySelectedSeats, $selectedSeat);
+
 
 			// 席種の空席の数をKeyValuePairとして配列に追加
 			$remaining = $seat::select('remainingSeats')->where('seatType', $selectedSeat['id'])->first();
-			array_push($remainingPerSeatTypes, [$selectedSeat['id'] => $remaining->remainingSeats]);
+
+			$selectedSeat['remaining'] = $remaining->remainingSeats;
+			array_push($remainingPerSeatTypes, $selectedSeat);
 
 			// お客さんの人数と、空席の数及びその席種の最大定員を掛けた数を比較して
 			// 後者が前者を上回らない場合に、availabilityをtrueとするKeyValuePairを配列に追加
@@ -83,7 +76,8 @@ class SeatController extends Controller
 			if ($guestsCount <= $maxPeopleByRemainingSeat) {
 
 				// 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
-				array_push($selectedSeatsAvailabilities, [$selectedSeat['id'] => true]);
+				$selectedSeat['availability'] = true;
+				array_push($selectedSeatsAvailabilities, $selectedSeat);
 
 				// 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
 				// 席種の最大定員からお客さんの数を引いて余る数
@@ -91,12 +85,16 @@ class SeatController extends Controller
 
 				switch ($guestsCount) {
 					case $guestsCount % $maxGuests->maxGuestsPerSeat == 0:
-						array_push($prioritizedOrderForGuidance, [$selectedSeat['id'] => 0]);
+
+						$selectedSeat['priorityFromZero'] = 0;
+						array_push($prioritizedOrderForGuidance, $selectedSeat);
 						break;
 
 					case $guestsCount % $maxGuests->maxGuestsPerSeat != 0:
 						$remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
-						array_push($prioritizedOrderForGuidance, [$selectedSeat['id'] => $remainOfOneSeatType]);
+
+						$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
+						array_push($prioritizedOrderForGuidance, $selectedSeat);
 						break;
 
 					default:
@@ -104,23 +102,28 @@ class SeatController extends Controller
 						break;
 				}
 			} else {
-				array_push($selectedSeatsAvailabilities, [$selectedSeat['id'] => false]);
+				$selectedSeat['availability'] = false;
+				array_push($selectedSeatsAvailabilities, $selectedSeat);
 			};
+
+			array_push($selectedSeatsPropsAdd, $selectedSeat);
 		}
 
+
+
+
 		// 一つの席で余る数の少ない順に並び替える
-		uasort($prioritizedOrderForGuidance, function ($v1, $v2) {
-			return $v1 < $v2;
+		uasort($selectedSeatsPropsAdd, function ($v1, $v2) {
+			return $v1['priorityFromZero'] > $v2['priorityFromZero'];
 		});
 
-		//dd($maxGuestsPerSeatBySelectedSeats, $remainingPerSeatTypes, $selectedSeatsAvailabilities, $prioritizedOrderForGuidance);
+		//dd($selectedSeatsPropsAdd);
 
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
 			'seat' => $seat,
-			'seatTypes' => $seatTypes,
-			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
+			'selectedSeatsPropsAdd' => $selectedSeatsPropsAdd
 		]);
 	}
 

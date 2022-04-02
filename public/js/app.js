@@ -22715,7 +22715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  props: ["request", "seat", "seatTypes", "prioritizedOrderForGuidance"],
+  props: ["request", "seat", "selectedSeatsPropsAdd"],
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -22727,14 +22727,13 @@ __webpack_require__.r(__webpack_exports__);
       // values below are only for developement
       form: this.$inertia.form({
         guestsCountInput: this.request.guestsCountInput,
-        selectedSeatTypes: this.request.selectedSeatTypes
-      }),
-      seatTypes: this.seatTypes
+        selectedSeatTypes: this.selectedSeatsPropsAdd
+      })
     };
   },
   methods: {
     showValue: function showValue() {
-      console.log(this.seatTypes);
+      console.log(this.form.selectedSeatTypes);
     },
     confirmed: function confirmed() {
       console.log("confirmed");
@@ -22813,9 +22812,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   },
   data: function data() {
     return {
+      seatTypes: [{
+        'id': 'counter',
+        'inJP': 'カウンター'
+      }, {
+        'id': 'tableSeat',
+        'inJP': 'テーブル席'
+      }, {
+        'id': 'tatamiRoom',
+        'inJP': '座敷席'
+      }],
       checkInputNum: true,
       checkAllSet: false,
-      seatTypes: this.seatTypes,
       form: this.$inertia.form({
         guestsCountInput: "",
         selectedSeatTypes: []
@@ -25779,47 +25787,54 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "column"
 };
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_4 = {
   "class": "messages-wrapper column"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Confirm"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("{{ prioritizedSeatType[0] }}に空席がございますので、"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" よろしければ確定をタップしてください。")])], -1
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Confirm", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
-  "class": "column"
-};
-var _hoisted_6 = {
-  "class": "num-and-select-buttons row"
-};
-var _hoisted_7 = {
-  "class": "number-input-wrapper"
-};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" よろしければ確定をタップしてください。");
+
 var _hoisted_8 = {
   "class": "column"
 };
 var _hoisted_9 = {
-  "class": "number-input show-input-number t-center"
+  "class": "num-and-select-buttons row"
 };
 var _hoisted_10 = {
-  "class": "column"
+  "class": "number-input-wrapper"
 };
 var _hoisted_11 = {
-  "class": "seat-select-buttons-wrapper"
+  "class": "column"
 };
 var _hoisted_12 = {
-  "class": "column"
+  "class": "number-input show-input-number t-center"
 };
 var _hoisted_13 = {
-  "class": "seat-select-buttons show-priority-seat-type"
-};
-var _hoisted_14 = {
   "class": "column"
 };
+var _hoisted_14 = {
+  "class": "seat-select-buttons-wrapper"
+};
 var _hoisted_15 = {
+  "class": "column"
+};
+var _hoisted_16 = {
+  "class": "seat-select-buttons show-priority-seat-type"
+};
+var _hoisted_17 = {
+  "class": "column"
+};
+var _hoisted_18 = {
   "class": "submit-button-wrapper t-center"
 };
-var _hoisted_16 = ["type"];
+var _hoisted_19 = ["type"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -25829,16 +25844,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
         title: "Booking Seats -Confirm"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.selectedSeatTypes[0]['inJP']) + "に空席がございますので、", 1
+      /* TEXT */
+      ), _hoisted_6, _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return _ctx.confirmed && _ctx.confirmed.apply(_ctx, arguments);
         }, ["prevent"])),
         "class": "input-form"
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.guestsCountInput) + "名様 ", 1
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.guestsCountInput) + "名様 ", 1
       /* TEXT */
-      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.theValue), 1
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.theValue), 1
       /* TEXT */
-      )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: _ctx.submit,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['submit-button', {
           'all-set': _ctx.checkAllSet
@@ -25846,7 +25863,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "submitButton"
       }, " 確 定 ", 10
       /* CLASS, PROPS */
-      , _hoisted_16), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Debug "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_19), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Debug "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
         onClick: _cache[0] || (_cache[0] = function () {
           return _ctx.showValue && _ctx.showValue.apply(_ctx, arguments);

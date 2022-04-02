@@ -7,7 +7,7 @@
 		<div class="column">
           <div class="messages-wrapper column">
 			<h1>Confirm</h1>
-			<p>&#123;&#123; prioritizedSeatType[0] &#125;&#125;に空席がございますので、<br />
+			<p>{{ form.selectedSeatTypes[0]['inJP'] }}に空席がございますので、<br />
 			よろしければ確定をタップしてください。</p>
 		  </div>
 
@@ -71,8 +71,7 @@ export default defineComponent({
   props: [
 	  "request", 
 	  "seat",
-	  "seatTypes",
-	  "prioritizedOrderForGuidance"
+	  "selectedSeatsPropsAdd"
 	],
 
   components: {
@@ -88,17 +87,15 @@ export default defineComponent({
 		// values below are only for developement
 		form: this.$inertia.form({
         	guestsCountInput: this.request.guestsCountInput,
-        	selectedSeatTypes: this.request.selectedSeatTypes,
+        	selectedSeatTypes: this.selectedSeatsPropsAdd,
         }),
-
-		seatTypes: this.seatTypes,
     };
   },
 
   methods: {
 
 	  showValue() {
-		  console.log(this.seatTypes)
+		  console.log(this.form.selectedSeatTypes)
 	  },
 	  
 	  confirmed() {
