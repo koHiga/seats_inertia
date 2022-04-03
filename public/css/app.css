@@ -115,9 +115,40 @@ footer li {
 .input-form .seat-select-buttons-wrapper .column {
   position: relative;
 }
-.input-form .number-input,
 .input-form .seat-select-buttons {
+  width: 100%;
   height: 50%;
+}
+.input-form .z-stack {
+  position: relative;
+  height: 50%;
+}
+.input-form .z-stack .number-input {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.input-form .z-stack .number-pad-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+.input-form .z-stack .number-pad-wrapper .number-pad {
+  position: relative;
+  margin: 0 auto;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  table-layout: fixed;
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
+}
+.input-form .z-stack .number-pad-wrapper .number-pad td {
+  border: 1px solid #fff;
 }
 .input-form .number-input {
   font-size: 3rem;
@@ -213,12 +244,37 @@ footer li {
 }
 
 /* NumberPad */
+/*
 .number-pad-wrapper {
-  position: absolute;
-  top: 50%;
-  align-self: center;
-  height: 50%;
+	position: absolute;
+	top: 50%;
+	align-self: center;
+	width: 66%;
+	height: 50%;
+	z-index: 10;
+
+	.number-pad {
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		table-layout: fixed;
+		background-color: orange;
+		border: none;
+		border-radius: 5px;
+		box-shadow:
+				0px 0px 6px rgba(63, 63, 63, 0.5),
+				0px 0px 6px rgba(238, 238, 238, 0.9),
+				inset 0px 0px 6px transparent,
+				inset 0px 0px 6px transparent;
+
+		td {
+			border: 1px solid #fff;
+		}
+	}
 }
+*/
 /* confirm */
 
 /*# sourceMappingURL=app.css.map*/

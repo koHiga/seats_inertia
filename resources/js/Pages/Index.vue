@@ -20,7 +20,9 @@
             <div class="num-and-select-buttons row">
               <div class="number-input-wrapper">
                 <div class="column">
-                  <input
+
+					<div class="z-stack">
+						<input
                     type="number"
                     v-model="form.guestsCountInput"
                     v-bind:class="[
@@ -33,7 +35,8 @@
                   />
 
 				  <NumberPad></NumberPad>
-
+					</div>
+                  
                   <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
                   </p>
