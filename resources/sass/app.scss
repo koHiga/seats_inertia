@@ -119,6 +119,10 @@ footer {
 	.seat-select-buttons-wrapper {
 		width: 35%;
 		height: 100%;
+
+		.column {
+			position: relative;
+		}
 	}
 
 	.number-input,
@@ -259,4 +263,18 @@ footer {
 	}
 }
 
+/* NumberPad */
+.number-pad-wrapper {
+	position: absolute;
+	top: 50%;
+	align-self: center;
+	height: 50%;
+
+	.number-pad {
+		
+	}
+}
+
 /* confirm */
+
+

@@ -13,6 +13,8 @@
             </p>
           </div>
 
+		  
+
           <form @submit.prevent="confirm" class="input-form">
 			  <div class="column">
             <div class="num-and-select-buttons row">
@@ -29,6 +31,9 @@
                     autocomplete="off"
                     required
                   />
+
+				  <NumberPad></NumberPad>
+
                   <p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
                   </p>
@@ -87,6 +92,7 @@ import { Head } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Header from "../Layouts/Header.vue";
 import Footer from "../Layouts/Footer.vue";
+import NumberPad from "./SubVue/NumberPad.vue"
 
 export default defineComponent({
 
@@ -99,6 +105,7 @@ export default defineComponent({
 		AppLayout,
 		Header,
 		Footer,
+		NumberPad,
   	},
 
   data() {

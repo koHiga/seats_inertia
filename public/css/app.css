@@ -111,6 +111,10 @@ footer li {
   width: 35%;
   height: 100%;
 }
+.input-form .number-input-wrapper .column,
+.input-form .seat-select-buttons-wrapper .column {
+  position: relative;
+}
 .input-form .number-input,
 .input-form .seat-select-buttons {
   height: 50%;
@@ -208,6 +212,13 @@ footer li {
   font-size: 0.9rem;
 }
 
+/* NumberPad */
+.number-pad-wrapper {
+  position: absolute;
+  top: 50%;
+  align-self: center;
+  height: 50%;
+}
 /* confirm */
 
 /*# sourceMappingURL=app.css.map*/
