@@ -2,22 +2,82 @@
 	<div class="number-pad-wrapper">
 			<table class="number-pad">
 				<tr>
-					<td>7</td>
-					<td>8</td>
-					<td>9</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="7"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="8"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="9"
+						/>
+					</td>
 				</tr>
 				<tr>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="4"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="5"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="6"
+						/>
+					</td>
 				</tr>
 				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="1"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="2"
+						/>
+					</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="3"
+						/>
+					</td>
 				</tr>
 				<tr>
-					<td>0</td>
+					<td>
+						<input 
+							type="button"
+							v-on:click="detectInputs($event)"
+							value="0"
+						/>
+					</td>
 				</tr>
 			</table>
 	</div>
@@ -35,12 +95,19 @@
 
         data() {
             return {
+
+				numbersInput: '',
 				
             }
         },
 
         methods: {
-            
+            detectInputs(event) {
+				console.log(event.target.value)
+
+				this.numbersInput += event.target.value
+				console.log(this.numbersInput)
+			}
         }
     })
 </script>

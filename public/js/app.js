@@ -23407,9 +23407,17 @@ __webpack_require__.r(__webpack_exports__);
   props: {},
   components: {},
   data: function data() {
-    return {};
+    return {
+      numbersInput: ''
+    };
   },
-  methods: {}
+  methods: {
+    detectInputs: function detectInputs(event) {
+      console.log(event.target.value);
+      this.numbersInput += event.target.value;
+      console.log(this.numbersInput);
+    }
+  }
 }));
 
 /***/ }),
@@ -27215,12 +27223,71 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "number-pad-wrapper"
 };
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<table class=\"number-pad\"><tr><td>7</td><td>8</td><td>9</td></tr><tr><td>4</td><td>5</td><td>6</td></tr><tr><td>1</td><td>2</td><td>3</td></tr><tr><td>0</td></tr></table>", 1);
-
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_2 = {
+  "class": "number-pad"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "7"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "8"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "9"
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "4"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "5"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "6"
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "1"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "2"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "3"
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[9] || (_cache[9] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    value: "0"
+  })])])])]);
 }
 
 /***/ }),
