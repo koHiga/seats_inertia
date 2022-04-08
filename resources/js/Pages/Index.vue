@@ -34,7 +34,9 @@
                     required
                   />
 
-				  <NumberPad></NumberPad>
+				  <NumberPad 
+				  	v-on:passNumbers="getNumbers"
+				  ></NumberPad>
 					</div>
                   
                   <p v-if="!checkInputNum" class="input-part-message">
@@ -170,6 +172,12 @@ export default defineComponent({
   },
 
   methods: {
+
+	getNumbers(numbersInput) {
+		this.form.guestsCountInput = numbersInput
+
+	},
+
     sstBasket(event, seatType) {
       if (this.form.selectedSeatTypes.includes(seatType)) {
         let idx = this.form.selectedSeatTypes.indexOf(seatType);

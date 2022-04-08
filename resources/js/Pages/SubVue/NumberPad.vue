@@ -107,6 +107,7 @@
 
 				this.numbersInput += event.target.value
 				console.log(this.numbersInput)
+				this.$emit('passNumbers', this.numbersInput)
 			}
         }
     })
