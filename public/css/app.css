@@ -92,7 +92,7 @@ footer li {
 
 .messages-wrapper {
   height: 96px;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .messages-wrapper h1 {
   font-weight: normal;
@@ -104,7 +104,7 @@ footer li {
 }
 .input-form .column {
   height: 100%;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 .input-form .number-input-wrapper,
 .input-form .seat-select-buttons-wrapper {
@@ -115,9 +115,26 @@ footer li {
 .input-form .seat-select-buttons-wrapper .column {
   position: relative;
 }
-.input-form .seat-select-buttons {
+.input-form .display-number {
+  position: absolute;
+  top: 2%;
   width: 100%;
-  height: 50%;
+  height: 8%;
+  background-color: rgba(238, 238, 238, 0.9);
+  border: none;
+  border-radius: 5px;
+  transition: box-shadow 0.5s;
+  box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
+}
+.input-form .display-number::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .input-form .z-stack {
   position: relative;
@@ -129,15 +146,12 @@ footer li {
   z-index: 10;
 }
 .input-form .z-stack .number-pad-wrapper {
-  position: absolute;
-  top: 0;
-  width: 100%;
+  width: 85%;
   height: 100%;
   z-index: 20;
 }
 .input-form .z-stack .number-pad-wrapper .number-pad {
   position: relative;
-  margin: 0 auto;
   padding: 5px;
   width: inherit;
   height: inherit;
@@ -161,7 +175,7 @@ footer li {
   background-color: rgba(238, 238, 238, 0.9);
   border: none;
   border-radius: 5px;
-  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, color 0.5s;
   box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
   cursor: pointer;
 }
@@ -177,6 +191,12 @@ footer li {
 }
 .input-form .z-stack .number-pad-wrapper .number-pad td input[type=button]:active {
   box-shadow: 0px 0px 6px transparent, 0px 0px 6px transparent, inset 0px 0px 6px rgba(63, 63, 63, 0.5), inset 0px 0px 6px rgba(238, 238, 238, 0.9);
+}
+.input-form .z-stack .number-pad-wrapper .number-pad td input:disabled {
+  cursor: default;
+}
+.input-form .z-stack .number-pad-wrapper .number-pad td input:disabled:active {
+  box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
 }
 .input-form .number-input {
   font-size: 3rem;
@@ -197,6 +217,10 @@ footer li {
 .input-form .number-input.show-input-number {
   background-color: #eee;
   box-shadow: none;
+}
+.input-form .seat-select-buttons {
+  width: 100%;
+  height: 50%;
 }
 .input-form .seat-select-buttons.column {
   justify-content: space-between;
@@ -268,6 +292,7 @@ footer li {
   background-color: #008031;
 }
 .input-form .input-part-message {
+  margin: 20px 0 10px 0;
   font-size: 0.9rem;
 }
 

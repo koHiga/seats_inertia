@@ -1,86 +1,107 @@
 <template>
+	
 	<div class="number-pad-wrapper">
-			<table class="number-pad">
-				<tr>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="7"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="8"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="9"
-						/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="4"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="5"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="6"
-						/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="1"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="2"
-						/>
-					</td>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="3"
-						/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input 
-							type="button"
-							v-on:click="detectInputs($event)"
-							value="0"
-						/>
-					</td>
-				</tr>
-			</table>
+		<table class="number-pad">
+			<tr>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="7"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="8"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="9"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="4"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="5"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="6"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="1"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="2"
+					/>
+				</td>
+				<td>
+					<input 
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="3"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input
+						type="button"
+						v-on:click="detectInputs($event)"
+						name="delete"
+						value="消去"
+						v-bind:disabled="!isDeletable"
+					/>
+				</td>
+				<td>
+					<input
+						type="button"
+						v-on:click="detectInputs($event)"
+						value="0"
+					/>
+				</td>
+				
+				<td>
+					<input
+						type="button"
+						v-on:click="detectInputs($event)"
+						name="return"
+						value="決定"
+						v-bind:disabled="!inputDone"
+					/>
+				</td>
+			</tr>
+		</table>
 	</div>
+	
 </template>
 
 <script>
@@ -88,6 +109,11 @@
 
     export default defineComponent({
         props: {
+			// binded variables in Index.vue
+			'checkInputNum': {
+				type: Boolean,
+				default: 'false'
+			}
         },
 
         components: {
@@ -97,15 +123,61 @@
             return {
 
 				numbersInput: '',
+				inputDone: false,
+				isDeletable: false,
 				
             }
         },
 
+		created() {
+			this.$watch(
+				() => [
+					this.$data.numbersInput,
+					this.checkInputNum,
+					this.$data.numbersInput,
+				],
+				([val1, val2, val3]) => {
+
+					// toggle boolean of return button
+					if (val1 != '' && val2 != false) {
+						this.inputDone = true
+					} else {
+						this.inputDone = false
+					}
+
+					// toggle boolean of delete button
+					if (val3.length >= 1) {
+						this.isDeletable = true
+					} else {
+						this.isDeletable = false
+					}
+				},
+				{
+					deep: true,
+				}
+			);
+		},
+
         methods: {
             detectInputs(event) {
-				console.log(event.target.value)
 
-				this.numbersInput += event.target.value
+				switch (event.target.name) {
+					case 'delete':
+						this.numbersInput = this.numbersInput.slice(0, -1)
+						console.log(this.numbersInput.length)
+						break;
+
+					case 'return':
+						if (this.inputDone) {
+							console.log('input is done')
+						}
+						break;
+				
+					default:
+						this.numbersInput = this.numbersInput + event.target.value
+						break;
+				}
+				
 				console.log(this.numbersInput)
 				this.$emit('passNumbers', this.numbersInput)
 			}

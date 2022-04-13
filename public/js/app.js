@@ -23405,19 +23405,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  props: {},
+  props: {
+    // binded variables in Index.vue
+    'checkInputNum': {
+      type: Boolean,
+      "default": 'false'
+    }
+  },
   components: {},
   data: function data() {
     return {
-      numbersInput: ''
+      numbersInput: '',
+      inputDone: false,
+      isDeletable: false
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$watch(function () {
+      return [_this.$data.numbersInput, _this.checkInputNum, _this.$data.numbersInput];
+    }, function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 3),
+          val1 = _ref2[0],
+          val2 = _ref2[1],
+          val3 = _ref2[2];
+
+      // toggle boolean of return button
+      if (val1 != '' && val2 != false) {
+        _this.inputDone = true;
+      } else {
+        _this.inputDone = false;
+      } // toggle boolean of delete button
+
+
+      if (val3.length >= 1) {
+        _this.isDeletable = true;
+      } else {
+        _this.isDeletable = false;
+      }
+    }, {
+      deep: true
+    });
   },
   methods: {
     detectInputs: function detectInputs(event) {
-      console.log(event.target.value);
-      this.numbersInput += event.target.value;
+      switch (event.target.name) {
+        case 'delete':
+          this.numbersInput = this.numbersInput.slice(0, -1);
+          console.log(this.numbersInput.length);
+          break;
+
+        case 'return':
+          if (this.inputDone) {
+            console.log('input is done');
+          }
+
+          break;
+
+        default:
+          this.numbersInput = this.numbersInput + event.target.value;
+          break;
+      }
+
       console.log(this.numbersInput);
       this.$emit('passNumbers', this.numbersInput);
     }
@@ -26014,15 +26078,15 @@ var _hoisted_8 = {
   "class": "column"
 };
 var _hoisted_9 = {
-  "class": "z-stack"
-};
-var _hoisted_10 = {
   key: 0,
   "class": "input-part-message"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   key: 1,
   "class": "input-part-message"
+};
+var _hoisted_11 = {
+  "class": "z-stack"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -26038,17 +26102,17 @@ var _hoisted_14 = {
   "class": "column"
 };
 var _hoisted_15 = {
-  "class": "seat-select-buttons column"
-};
-var _hoisted_16 = ["value", "onClick"];
-var _hoisted_17 = {
   key: 0,
   "class": "input-part-message"
 };
-var _hoisted_18 = {
+var _hoisted_16 = {
   key: 1,
   "class": "input-part-message"
 };
+var _hoisted_17 = {
+  "class": "seat-select-buttons column"
+};
+var _hoisted_18 = ["value", "onClick"];
 var _hoisted_19 = {
   "class": "submit-button-wrapper t-center"
 };
@@ -26069,8 +26133,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.confirm && _ctx.confirm.apply(_ctx, arguments);
         }, ["prevent"])),
         "class": "input-form"
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        type: "number",
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [!_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_9, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_10, " お客様の人数をご入力ください。 ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return _ctx.form.guestsCountInput = $event;
         }),
@@ -26080,10 +26144,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 2
       /* CLASS */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.guestsCountInput]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NumberPad, {
-        onPassNumbers: _ctx.getNumbers
+        onPassNumbers: _ctx.getNumbers,
+        checkInputNum: _ctx.checkInputNum
       }, null, 8
       /* PROPS */
-      , ["onPassNumbers"])]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_10, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_11, " お客様の人数をご入力ください。 "))])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
+      , ["onPassNumbers", "checkInputNum"])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [!_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_15, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_16, " ご希望の席種をご選択ください。 ")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.seatTypes, function (seatType) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
           type: "button",
           key: seatType.id,
@@ -26094,10 +26159,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "seat-select-button neumorphism"
         }, null, 8
         /* PROPS */
-        , _hoisted_16);
+        , _hoisted_18);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), !_ctx.checkInputNum ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_17, " 1から50の整数で入力してください。 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_18, " ご希望の席種をご選択ください。 "))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      ))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: _ctx.submit,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['submit-button', {
           'all-set': _ctx.checkAllSet
@@ -27234,6 +27299,8 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "number-pad"
 };
+var _hoisted_3 = ["disabled"];
+var _hoisted_4 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
@@ -27294,8 +27361,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return _ctx.detectInputs($event);
     }),
+    name: "delete",
+    value: "消去",
+    disabled: !_ctx.isDeletable
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
     value: "0"
-  })])])])]);
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "button",
+    onClick: _cache[11] || (_cache[11] = function ($event) {
+      return _ctx.detectInputs($event);
+    }),
+    name: "return",
+    value: "決定",
+    disabled: !_ctx.inputDone
+  }, null, 8
+  /* PROPS */
+  , _hoisted_4)])])])]);
 }
 
 /***/ }),

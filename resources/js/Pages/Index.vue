@@ -21,30 +21,31 @@
               <div class="number-input-wrapper">
                 <div class="column">
 
-					<div class="z-stack">
-						<input
-                    type="number"
-                    v-model="form.guestsCountInput"
-                    v-bind:class="[
-						'number-input',
-						't-center', 
-						!checkInputNum ? 'invalidNum' : 'validNum'
-					]"
-                    autocomplete="off"
-                    required
-                  />
-
-				  <NumberPad 
-				  	v-on:passNumbers="getNumbers"
-				  ></NumberPad>
-					</div>
-                  
-                  <p v-if="!checkInputNum" class="input-part-message">
+					<p v-if="!checkInputNum" class="input-part-message">
                     1から50の整数で入力してください。
                   </p>
                   <p v-else class="input-part-message">
                     お客様の人数をご入力ください。
                   </p>
+
+					<div class="z-stack">
+						<input
+							type="text"
+							v-model="form.guestsCountInput"
+							v-bind:class="[
+								'number-input',
+								't-center', 
+								!checkInputNum ? 'invalidNum' : 'validNum'
+							]"
+							autocomplete="off"
+							required
+                		/>
+
+						<NumberPad 
+							v-on:passNumbers="getNumbers"
+							v-bind:checkInputNum="checkInputNum"
+						></NumberPad>
+					</div>
                 </div>
               </div>
 
@@ -52,6 +53,14 @@
 
               <div class="seat-select-buttons-wrapper">
 				<div class="column">
+
+					<p v-if="!checkInputNum" class="input-part-message">
+                    1から50の整数で入力してください。
+                  </p>
+                  <p v-else class="input-part-message">
+                    ご希望の席種をご選択ください。
+                  </p>
+
 					<div class="seat-select-buttons column">
 						<input 
 							type="button"
@@ -62,12 +71,6 @@
 							class="seat-select-button neumorphism"
 						/>
 					</div>
-                  <p v-if="!checkInputNum" class="input-part-message">
-                    1から50の整数で入力してください。
-                  </p>
-                  <p v-else class="input-part-message">
-                    ご希望の席種をご選択ください。
-                  </p>
                 </div>
               </div>
             </div>
