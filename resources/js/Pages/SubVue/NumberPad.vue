@@ -1,7 +1,12 @@
 <template>
 	
 	<div class="number-pad-wrapper">
-		<table class="number-pad">
+		<table 
+			v-bind:class="[
+				'number-pad',
+				maskOver ? 'mask' : ''
+			]"
+		>
 			<tr>
 				<td>
 					<input 
@@ -75,6 +80,7 @@
 				<td>
 					<input
 						type="button"
+						class="not-number"
 						v-on:click="detectInputs($event)"
 						name="delete"
 						value="消去"
@@ -92,6 +98,7 @@
 				<td>
 					<input
 						type="button"
+						class="not-number"
 						v-on:click="detectInputs($event)"
 						name="return"
 						value="決定"
@@ -100,6 +107,14 @@
 				</td>
 			</tr>
 		</table>
+		<span 
+			v-bind:class="[
+				'type-numbers-message',
+				maskOver ? 'mask' : ''
+			]"
+		>
+			<p v-on:click="maskToggle">入力する場合は<br />こちらをタップ</p>
+		</span>
 	</div>
 	
 </template>
@@ -125,6 +140,7 @@
 				numbersInput: '',
 				inputDone: false,
 				isDeletable: false,
+				maskOver: false,
 				
             }
         },
@@ -170,6 +186,7 @@
 					case 'return':
 						if (this.inputDone) {
 							console.log('input is done')
+							this.maskOver = true
 						}
 						break;
 				
@@ -180,7 +197,15 @@
 				
 				console.log(this.numbersInput)
 				this.$emit('passNumbers', this.numbersInput)
-			}
+			},
+
+			maskToggle() {
+				if (this.maskOver) {
+					this.maskOver = false
+				} else {
+					this.maskOver = true
+				}
+			},
         }
     })
 </script>

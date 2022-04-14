@@ -23431,7 +23431,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     return {
       numbersInput: '',
       inputDone: false,
-      isDeletable: false
+      isDeletable: false,
+      maskOver: false
     };
   },
   created: function created() {
@@ -23473,6 +23474,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         case 'return':
           if (this.inputDone) {
             console.log('input is done');
+            this.maskOver = true;
           }
 
           break;
@@ -23484,6 +23486,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       console.log(this.numbersInput);
       this.$emit('passNumbers', this.numbersInput);
+    },
+    maskToggle: function maskToggle() {
+      if (this.maskOver) {
+        this.maskOver = false;
+      } else {
+        this.maskOver = true;
+      }
     }
   }
 }));
@@ -27296,13 +27305,22 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "number-pad-wrapper"
 };
-var _hoisted_2 = {
-  "class": "number-pad"
-};
+var _hoisted_2 = ["disabled"];
 var _hoisted_3 = ["disabled"];
-var _hoisted_4 = ["disabled"];
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("入力する場合は");
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("こちらをタップ");
+
+var _hoisted_7 = [_hoisted_4, _hoisted_5, _hoisted_6];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['number-pad', _ctx.maskOver ? 'mask' : ''])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.detectInputs($event);
@@ -27358,6 +27376,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: "3"
   })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
+    "class": "not-number",
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return _ctx.detectInputs($event);
     }),
@@ -27366,7 +27385,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: !_ctx.isDeletable
   }, null, 8
   /* PROPS */
-  , _hoisted_3)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_2)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[10] || (_cache[10] = function ($event) {
       return _ctx.detectInputs($event);
@@ -27374,6 +27393,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: "0"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
+    "class": "not-number",
     onClick: _cache[11] || (_cache[11] = function ($event) {
       return _ctx.detectInputs($event);
     }),
@@ -27382,7 +27402,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: !_ctx.inputDone
   }, null, 8
   /* PROPS */
-  , _hoisted_4)])])])]);
+  , _hoisted_3)])])], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['type-numbers-message', _ctx.maskOver ? 'mask' : ''])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    onClick: _cache[12] || (_cache[12] = function () {
+      return _ctx.maskToggle && _ctx.maskToggle.apply(_ctx, arguments);
+    })
+  }, _hoisted_7)], 2
+  /* CLASS */
+  )]);
 }
 
 /***/ }),

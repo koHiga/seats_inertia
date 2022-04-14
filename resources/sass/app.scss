@@ -165,10 +165,11 @@ footer {
 		}
 
 		.number-pad-wrapper {
-			
+			position: relative;
 			width: 85%;
 			height: 100%;
 			z-index: 20;
+			transition: opacity 0.5s;
 			
 			.number-pad {
 				position: relative;
@@ -205,6 +206,7 @@ footer {
 							inset 0px 0px 6px transparent,
 							inset 0px 0px 6px transparent;
 						cursor: pointer;
+						font-size: 1rem;
 
 						&::after {
 							content: '';
@@ -224,6 +226,10 @@ footer {
 								inset 0px 0px 6px rgba(63, 63, 63, 0.5),
 								inset 0px 0px 6px rgba(238, 238, 238, 0.9);
 						}
+
+						&.not-number {
+							font-size: 0.8rem;
+						}
 					}
 
 					input:disabled {
@@ -238,10 +244,42 @@ footer {
 						}
 					}
 				}
+
+				&.mask {
+					opacity: 0.2;
+				}
+			}
+
+			
+
+			.type-numbers-message {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				border-radius: inherit;
+				color: #333;
+				backdrop-filter: blur(10px);
+				cursor: pointer;
+				transition: 0.3s;
+				visibility: hidden;
+				opacity: 0;
+
+				p {
+					padding: 10px;
+					font-size: 0.9rem;
+				}
+
+				&.mask {
+					visibility: visible;
+					opacity: 1;
+				}
 			}
 		}
-
-		
 	}
 
 	.number-input {
