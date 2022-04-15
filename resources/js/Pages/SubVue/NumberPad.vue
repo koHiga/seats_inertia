@@ -1,6 +1,11 @@
 <template>
 	
-	<div class="number-pad-wrapper">
+	<div 
+		v-bind:class="[
+			'number-pad-wrapper',
+			maskOver ? 'mask' : ''
+		]"
+	>
 		<table 
 			v-bind:class="[
 				'number-pad',
@@ -13,6 +18,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="7"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -20,6 +26,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="8"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -27,6 +34,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="9"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 			</tr>
@@ -36,6 +44,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="4"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -43,6 +52,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="5"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -50,6 +60,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="6"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 			</tr>
@@ -59,6 +70,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="1"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -66,6 +78,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="2"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				<td>
@@ -73,6 +86,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="3"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 			</tr>
@@ -84,7 +98,9 @@
 						v-on:click="detectInputs($event)"
 						name="delete"
 						value="消去"
-						v-bind:disabled="!isDeletable"
+						v-bind:disabled="
+							!isDeletable || maskOver
+						"
 					/>
 				</td>
 				<td>
@@ -92,6 +108,7 @@
 						type="button"
 						v-on:click="detectInputs($event)"
 						value="0"
+						v-bind:disabled="maskOver"
 					/>
 				</td>
 				
@@ -102,7 +119,9 @@
 						v-on:click="detectInputs($event)"
 						name="return"
 						value="決定"
-						v-bind:disabled="!inputDone"
+						v-bind:disabled="
+							!inputDone || maskOver
+						"
 					/>
 				</td>
 			</tr>

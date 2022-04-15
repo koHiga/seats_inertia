@@ -27302,79 +27302,115 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "number-pad-wrapper"
-};
+var _hoisted_1 = ["disabled"];
 var _hoisted_2 = ["disabled"];
 var _hoisted_3 = ["disabled"];
+var _hoisted_4 = ["disabled"];
+var _hoisted_5 = ["disabled"];
+var _hoisted_6 = ["disabled"];
+var _hoisted_7 = ["disabled"];
+var _hoisted_8 = ["disabled"];
+var _hoisted_9 = ["disabled"];
+var _hoisted_10 = ["disabled"];
+var _hoisted_11 = ["disabled"];
+var _hoisted_12 = ["disabled"];
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("入力する場合は");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("入力する場合は");
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("こちらをタップ");
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("こちらをタップ");
 
-var _hoisted_7 = [_hoisted_4, _hoisted_5, _hoisted_6];
+var _hoisted_16 = [_hoisted_13, _hoisted_14, _hoisted_15];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['number-pad-wrapper', _ctx.maskOver ? 'mask' : ''])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['number-pad', _ctx.maskOver ? 'mask' : ''])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "7"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "7",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_1)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "8"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "8",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_2)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "9"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "9",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "4"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "4",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_4)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "5"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "5",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "6"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "6",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_6)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "1"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "1",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "2"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "2",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[8] || (_cache[8] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "3"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "3",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_9)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     "class": "not-number",
     onClick: _cache[9] || (_cache[9] = function ($event) {
@@ -27382,16 +27418,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     name: "delete",
     value: "消去",
-    disabled: !_ctx.isDeletable
+    disabled: !_ctx.isDeletable || _ctx.maskOver
   }, null, 8
   /* PROPS */
-  , _hoisted_2)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     onClick: _cache[10] || (_cache[10] = function ($event) {
       return _ctx.detectInputs($event);
     }),
-    value: "0"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    value: "0",
+    disabled: _ctx.maskOver
+  }, null, 8
+  /* PROPS */
+  , _hoisted_11)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "button",
     "class": "not-number",
     onClick: _cache[11] || (_cache[11] = function ($event) {
@@ -27399,10 +27438,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     name: "return",
     value: "決定",
-    disabled: !_ctx.inputDone
+    disabled: !_ctx.inputDone || _ctx.maskOver
   }, null, 8
   /* PROPS */
-  , _hoisted_3)])])], 2
+  , _hoisted_12)])])], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['type-numbers-message', _ctx.maskOver ? 'mask' : ''])
@@ -27410,9 +27449,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[12] || (_cache[12] = function () {
       return _ctx.maskToggle && _ctx.maskToggle.apply(_ctx, arguments);
     })
-  }, _hoisted_7)], 2
+  }, _hoisted_16)], 2
   /* CLASS */
-  )]);
+  )], 2
+  /* CLASS */
+  );
 }
 
 /***/ }),
