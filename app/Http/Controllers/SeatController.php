@@ -81,25 +81,17 @@ class SeatController extends Controller
 
 				// 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
 				// 席種の最大定員からお客さんの数を引いて余る数
-				$remainOfOneSeatType = 0;
+				$remainOfOneSeatType = '';
 
-				switch ($guestsCount) {
-					case $guestsCount % $maxGuests->maxGuestsPerSeat == 0:
+				if ($guestsCount % $maxGuests->maxGuestsPerSeat == 0) {
 
-						$selectedSeat['priorityFromZero'] = 0;
-						array_push($prioritizedOrderForGuidance, $selectedSeat);
-						break;
 
-					case $guestsCount % $maxGuests->maxGuestsPerSeat != 0:
-						$remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
+					$remainOfOneSeatType = 0;
+					$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
+				} else {
 
-						$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
-						array_push($prioritizedOrderForGuidance, $selectedSeat);
-						break;
-
-					default:
-						return Redirect::route('index');
-						break;
+					$remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
+					$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
 				}
 			} else {
 				$selectedSeat['availability'] = false;
@@ -109,16 +101,10 @@ class SeatController extends Controller
 			array_push($selectedSeatsPropsAdd, $selectedSeat);
 		}
 
-
-
-
 		// 一つの席で余る数の少ない順に並び替える
 		uasort($selectedSeatsPropsAdd, function ($v1, $v2) {
 			return $v1['priorityFromZero'] > $v2['priorityFromZero'];
 		});
-
-		//dd($selectedSeatsPropsAdd);
-
 
 		return Inertia::render('Confirm', [
 			'request' => $request,

@@ -77,7 +77,7 @@
 
             <div class="submit-button-wrapper t-center">
               <button
-                :type="submit"
+                :type="button"
                 :class="[ 'submit-button',
 				{'all-set': checkAllSet} ]"
                 id="submitButton"
@@ -195,8 +195,10 @@ export default defineComponent({
     },
 
     confirm() {
-      console.log("send post");
-      this.form.post(route("confirm"));
+		if (this.checkAllSet) {
+			console.log("send post");
+			this.form.post(route("confirm"));
+		}
     },
   },
 });
