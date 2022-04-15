@@ -22886,8 +22886,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       console.log(this.form.selectedSeatTypes);
     },
     confirm: function confirm() {
-      console.log("send post");
-      this.form.post(route("confirm"));
+      if (this.checkAllSet) {
+        console.log("send post");
+        this.form.post(route("confirm"));
+      }
     }
   }
 }));
@@ -26172,7 +26174,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 128
       /* KEYED_FRAGMENT */
       ))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        type: _ctx.submit,
+        type: _ctx.button,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['submit-button', {
           'all-set': _ctx.checkAllSet
         }]),
