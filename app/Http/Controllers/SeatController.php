@@ -40,51 +40,27 @@ class SeatController extends Controller
 		$guestsCount = $request->guestsCountInput;
 		$selectedSeats = $request->selectedSeatTypes;
 
-		// array([ 選択された席種 => その席種の最大定員 ])
-		$maxGuestsPerSeatBySelectedSeats = [];
-
-		// array([ 選択された席種 => 空席の数 ])
-		$remainingPerSeatTypes = [];
-
-		// array([ 選択された席種 => 空席があるか否か ])
-		$selectedSeatsAvailabilities = [];
-
 		// array([ 選択された席種 => 席種の最大定員の余り ]) : 余りの少ない順
 		$prioritizedOrderForGuidance = [];
 
-		$selectedSeatsPropsAdd = [];
-
 		foreach ($selectedSeats as $selectedSeat) {
 
-			// 席種の最大定員をKeyValuePairとして配列に追加
+			// DBの席種の最大定員を取得
 			$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', $selectedSeat['id'])->first();
 
-			$selectedSeat['maxGuests'] = $maxGuests->maxGuestsPerSeat;
-
-			array_push($maxGuestsPerSeatBySelectedSeats, $selectedSeat);
-
-
-			// 席種の空席の数をKeyValuePairとして配列に追加
+			// DBの席種の空席数を取得
 			$remaining = $seat::select('remainingSeats')->where('seatType', $selectedSeat['id'])->first();
 
-			$selectedSeat['remaining'] = $remaining->remainingSeats;
-			array_push($remainingPerSeatTypes, $selectedSeat);
-
-			// お客さんの人数と、空席の数及びその席種の最大定員を掛けた数を比較して
-			// 後者が前者を上回らない場合に、availabilityをtrueとするKeyValuePairを配列に追加
+			// 上述の2つの値を掛けた数を以下の変数に代入して定義
 			$maxPeopleByRemainingSeat = $maxGuests->maxGuestsPerSeat * $remaining->remainingSeats;
+
+			// 入力された人数に対して、席種の最大定員と席種の残数を掛けた数を比較し、
+			// 前者が後者以下であれば空席があるとして、Confirmに渡す情報を作成していく。
 			if ($guestsCount <= $maxPeopleByRemainingSeat) {
 
-				// 入力された人数と席種の最大定員に応じて、空席があるか否かを返す
-				$selectedSeat['availability'] = true;
-				array_push($selectedSeatsAvailabilities, $selectedSeat);
-
-				// 上記でtrueとなった場合に、最大定員により近い席種を上位に並べた配列を作成
-				// 席種の最大定員からお客さんの数を引いて余る数
-				$remainOfOneSeatType = '';
-
+				// なるべく一つの席種の最大定員を埋める様に案内する為、
+				//入力された人数を席種の最大定員で割って残る席が少ない順に並べる。
 				if ($guestsCount % $maxGuests->maxGuestsPerSeat == 0) {
-
 
 					$remainOfOneSeatType = 0;
 					$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
@@ -93,23 +69,21 @@ class SeatController extends Controller
 					$remainOfOneSeatType = $maxGuests->maxGuestsPerSeat - ($guestsCount % $maxGuests->maxGuestsPerSeat);
 					$selectedSeat['priorityFromZero'] = $remainOfOneSeatType;
 				}
-			} else {
-				$selectedSeat['availability'] = false;
-				array_push($selectedSeatsAvailabilities, $selectedSeat);
-			};
 
-			array_push($selectedSeatsPropsAdd, $selectedSeat);
+				array_push($prioritizedOrderForGuidance, $selectedSeat);
+			}
 		}
 
 		// 一つの席で余る数の少ない順に並び替える
-		uasort($selectedSeatsPropsAdd, function ($v1, $v2) {
+		usort($prioritizedOrderForGuidance, function ($v1, $v2) {
 			return $v1['priorityFromZero'] > $v2['priorityFromZero'];
 		});
+		//dd($prioritizedOrderForGuidance);
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
 			'seat' => $seat,
-			'selectedSeatsPropsAdd' => $selectedSeatsPropsAdd
+			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
 		]);
 	}
 

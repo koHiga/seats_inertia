@@ -7,48 +7,40 @@
 		<div class="column">
           <div class="messages-wrapper column">
 			<h1>Confirm</h1>
-			<p>{{ form.selectedSeatTypes[0]['inJP'] }}に空席がございますので、<br />
+			<p>{{ form.prioritizedOrderForGuidance[0]['inJP'] }}に空席がございますので、<br />
 			よろしければ確定をタップしてください。</p>
 		  </div>
 
-		  <form @submit.prevent="confirmed" class="input-form">
-			  <div class="column">
-            <div class="num-and-select-buttons row">
-              <div class="number-input-wrapper">
-                <div class="column">
-                  <div class="number-input show-input-number t-center">
-					<p class="column">
+		  <form @submit.prevent="confirmed" class="confirm-form column">
+			<div class="show-input-number">
+					<p>
 						{{ form.guestsCountInput }}名様
 					</p>
-					</div>
-                </div>
-              </div>
-
-              <div class="seat-select-buttons-wrapper">
-				<div class="column">
-					<div class="seat-select-buttons show-priority-seat-type">
-						<p class="column">{{ theValue }}</p>
-					</div>
-                </div>
-              </div>
+					<p>
+						{{ form.prioritizedOrderForGuidance[0]['inJP'] }}
+					</p>
             </div>
 
-            <div class="submit-button-wrapper t-center">
-              <button
-                :type="submit"
-                :class="[ 'submit-button',
-					{'all-set': checkAllSet} 
-				]"
-                id="submitButton"
-              >
-                確 定
-              </button>
+			<div class="submit-button-wrapper t-center">
 
-			  <!-- Debug -->
-<button type="button" v-on:click="showValue">showValue</button>
-            </div>
+				<button
+					type="button"
+					class="return-button all-set"
+				>
+					修 正
+				</button>
+				
+				<button
+					:type="submit"
+					class="submit-button all-set"
+					id="submitButton"
+				>
+					確 定
+				</button>
 
-
+			<!-- Debug 
+				<button type="button" v-on:click="showValue">showValue</button>
+			-->
 			</div>
           </form>
 		</div>
@@ -71,7 +63,7 @@ export default defineComponent({
   props: [
 	  "request", 
 	  "seat",
-	  "selectedSeatsPropsAdd"
+	  "prioritizedOrderForGuidance"
 	],
 
   components: {
@@ -87,7 +79,7 @@ export default defineComponent({
 		// values below are only for developement
 		form: this.$inertia.form({
         	guestsCountInput: this.request.guestsCountInput,
-        	selectedSeatTypes: this.selectedSeatsPropsAdd,
+        	prioritizedOrderForGuidance: this.prioritizedOrderForGuidance,
         }),
     };
   },
@@ -95,7 +87,7 @@ export default defineComponent({
   methods: {
 
 	  showValue() {
-		  console.log(this.form.selectedSeatTypes)
+		  console.log(this.form.prioritizedOrderForGuidance)
 	  },
 	  
 	  confirmed() {

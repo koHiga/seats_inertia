@@ -1,0 +1,41 @@
+@mixin submitButton($bgColor, $width) {
+	
+	width: $width;
+	height: 70%;
+	background-color: rgba($color: $bgColor, $alpha: 0.5);
+	color: #eee;
+	font-size: 2rem;
+	border: none;
+	border-radius: 5px;
+	transition: box-shadow 0.1s, background-color 0.5s;
+	box-shadow:
+		0px 0px 6px rgba(63, 63, 63, 0.5),
+		0px 0px 6px rgba(238, 238, 238, 0.9),
+		inset 0px 0px 6px transparent,
+		inset 0px 0px 6px transparent;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	&.all-set {
+		background-color: rgba($color: $bgColor, $alpha: 1);
+		cursor: pointer;
+		
+		&:active {
+			box-shadow:
+				0px 0px 6px transparent,
+				0px 0px 6px transparent,
+				inset 0px 0px 6px rgba(63, 63, 63, 0.5),
+				inset 0px 0px 6px rgba(238, 238, 238, 0.9);
+		}
+	}
+}
+

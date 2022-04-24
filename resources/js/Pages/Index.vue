@@ -13,8 +13,6 @@
             </p>
           </div>
 
-		  
-
           <form @submit.prevent="confirm" class="input-form">
 			  <div class="column">
             <div class="num-and-select-buttons row">
