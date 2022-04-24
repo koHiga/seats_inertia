@@ -25,7 +25,8 @@
 
 				<button
 					type="button"
-					class="return-button all-set"
+					class="back-button all-set"
+					v-on:click="backToIndex"
 				>
 					修 正
 				</button>
@@ -54,6 +55,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import { Inertia } from "@inertiajs/inertia"
 import { Head } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Header from "../Layouts/Header.vue";
@@ -62,7 +64,7 @@ import Footer from "../Layouts/Footer.vue";
 export default defineComponent({
   props: [
 	  "request", 
-	  "seat",
+	  "selectedSeats",
 	  "prioritizedOrderForGuidance"
 	],
 
@@ -86,13 +88,18 @@ export default defineComponent({
 
   methods: {
 
-	  showValue() {
-		  console.log(this.form.prioritizedOrderForGuidance)
-	  },
+	showValue() {
+		console.log(this.form.prioritizedOrderForGuidance)
+	},
 	  
-	  confirmed() {
-		  console.log("confirmed")
-	  },
-  },
-});
+	confirmed() {
+		console.log("confirmed")
+		this.form.post(route("confirmed"))
+	},
+
+	backToIndex() {
+		
+  	},
+  }
+})
 </script>

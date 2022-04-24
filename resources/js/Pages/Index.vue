@@ -126,7 +126,7 @@ export default defineComponent({
       checkAllSet: false,
 
       form: this.$inertia.form({
-        guestsCountInput: "",
+        guestsCountInput: '',
         selectedSeatTypes: [],
       }),
     };
@@ -162,7 +162,6 @@ export default defineComponent({
           //console.log(val1, val2);
           this.checkInputNum = false;
           this.checkAllSet = false;
-
           
         }
       },

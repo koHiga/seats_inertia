@@ -1,10 +1,10 @@
-@mixin submitButton($bgColor, $width) {
+@mixin submitButton($bgColor, $width, $fontSize) {
 	
 	width: $width;
 	height: 70%;
 	background-color: rgba($color: $bgColor, $alpha: 0.5);
 	color: #eee;
-	font-size: 2rem;
+	font-size: $fontSize;
 	border: none;
 	border-radius: 5px;
 	transition: box-shadow 0.1s, background-color 0.5s;

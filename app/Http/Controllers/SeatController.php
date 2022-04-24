@@ -16,8 +16,6 @@ class SeatController extends Controller
 	 */
 	public function index()
 	{
-		// データベーステーブルを確認するメソッド
-		//dd(Seat::all());
 		// Index.vueを返すルーティイング（web.phpにて、'/'へアクセスするとこのコントローラーを参照する様に設定済み。
 		return Inertia::render('Index');
 	}
@@ -78,11 +76,11 @@ class SeatController extends Controller
 		usort($prioritizedOrderForGuidance, function ($v1, $v2) {
 			return $v1['priorityFromZero'] > $v2['priorityFromZero'];
 		});
-		//dd($prioritizedOrderForGuidance);
+		//dd($selectedSeats);
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
-			'seat' => $seat,
+			'selectedSeats' => $selectedSeats,
 			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
 		]);
 	}

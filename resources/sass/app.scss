@@ -370,7 +370,7 @@ footer {
 		height: 20%;
 
 		.submit-button {
-			@include submitButton($theme_green, 30%);
+			@include submitButton($theme_green, 30%, 2rem);
 		}
 	}
 
@@ -416,12 +416,12 @@ footer {
 		width: 60%;
 		height: 20%;
 
-		.return-button {
-			@include submitButton($theme_orange, 30%);
+		.back-button {
+			@include submitButton($theme_orange, 40%, 1.8rem);
 		}
 
 		.submit-button {
-			@include submitButton($theme_green, 50%);
+			@include submitButton($theme_green, 50%, 2rem);
 		}
 	}
 }

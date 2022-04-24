@@ -363,18 +363,18 @@ footer li {
   width: 60%;
   height: 20%;
 }
-.confirm-form .submit-button-wrapper .return-button {
-  width: 30%;
+.confirm-form .submit-button-wrapper .back-button {
+  width: 40%;
   height: 70%;
-  background-color: rgba(160, 105, 1, 0.5);
+  background-color: rgba(188, 122, 1, 0.5);
   color: #eee;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border: none;
   border-radius: 5px;
   transition: box-shadow 0.1s, background-color 0.5s;
   box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
 }
-.confirm-form .submit-button-wrapper .return-button::after {
+.confirm-form .submit-button-wrapper .back-button::after {
   content: "";
   display: block;
   position: absolute;
@@ -384,11 +384,11 @@ footer li {
   width: 100%;
   height: 100%;
 }
-.confirm-form .submit-button-wrapper .return-button.all-set {
-  background-color: #a06901;
+.confirm-form .submit-button-wrapper .back-button.all-set {
+  background-color: #bc7a01;
   cursor: pointer;
 }
-.confirm-form .submit-button-wrapper .return-button.all-set:active {
+.confirm-form .submit-button-wrapper .back-button.all-set:active {
   box-shadow: 0px 0px 6px transparent, 0px 0px 6px transparent, inset 0px 0px 6px rgba(63, 63, 63, 0.5), inset 0px 0px 6px rgba(238, 238, 238, 0.9);
 }
 .confirm-form .submit-button-wrapper .submit-button {
