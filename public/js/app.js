@@ -22878,11 +22878,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     });
   },
   mounted: function mounted() {
-    //console.log(this.request.selectedSeatTypes)
+    // Re atatch 'selected' class by 'selectedSeatTypes' that passed from 'Confirm'
     var sstbs = document.getElementsByClassName('seat-select-button');
 
     for (var $i = 0; $i < sstbs.length; $i++) {
-      //console.log(sstbs[$i].value)
       for (var $j = 0; $j < this.request.selectedSeatTypes.length; $j++) {
         if (sstbs[$i].value === this.request.selectedSeatTypes[$j]['inJP']) {
           sstbs[$i].classList.add('selected');

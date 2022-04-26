@@ -175,11 +175,10 @@ export default defineComponent({
   },
 
   mounted() {
-	  //console.log(this.request.selectedSeatTypes)
+	  // Re atatch 'selected' class by 'selectedSeatTypes' that passed from 'Confirm'
 	  let sstbs = document.getElementsByClassName('seat-select-button')
 
 	  for (let $i = 0; $i < sstbs.length; $i++) {
-		  //console.log(sstbs[$i].value)
 		  
 		  for (let $j = 0; $j < this.request.selectedSeatTypes.length; $j++) {
 			  if (sstbs[$i].value === this.request.selectedSeatTypes[$j]['inJP']) {
