@@ -22877,6 +22877,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       deep: true
     });
   },
+  mounted: function mounted() {
+    //console.log(this.request.selectedSeatTypes)
+    var sstbs = document.getElementsByClassName('seat-select-button');
+
+    for (var $i = 0; $i < sstbs.length; $i++) {
+      //console.log(sstbs[$i].value)
+      for (var $j = 0; $j < this.request.selectedSeatTypes.length; $j++) {
+        if (sstbs[$i].value === this.request.selectedSeatTypes[$j]['inJP']) {
+          sstbs[$i].classList.add('selected');
+        }
+      }
+    }
+  },
   methods: {
     getNumbers: function getNumbers(numbersInput) {
       this.form.guestsCountInput = numbersInput;
@@ -22891,8 +22904,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         event.target.classList.add("selected");
       }
-
-      console.log(this.form.selectedSeatTypes);
     },
     confirm: function confirm() {
       if (this.checkAllSet) {
@@ -26228,11 +26239,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: function onClick($event) {
             return _ctx.sstBasket($event, seatType);
           },
-          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['seat-select-button', 'neumorphism', {
-            'selected': _ctx.form.selectedSeatTypes.includes(seatType.id)
-          }])
-        }, null, 10
-        /* CLASS, PROPS */
+          "class": "seat-select-button neumorphism"
+        }, null, 8
+        /* PROPS */
         , _hoisted_18);
       }), 128
       /* KEYED_FRAGMENT */

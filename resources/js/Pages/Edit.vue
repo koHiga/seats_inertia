@@ -69,9 +69,7 @@
 							:key="seatType.id"
 							v-bind:value="seatType.inJP"
 							v-on:click="sstBasket($event, seatType)"
-							:class="[ 'seat-select-button', 'neumorphism',
-								{ 'selected': form.selectedSeatTypes.includes(seatType.id) }
-							]"
+							class="seat-select-button neumorphism"
 						/>
 					</div>
                 </div>
@@ -176,6 +174,21 @@ export default defineComponent({
     );
   },
 
+  mounted() {
+	  //console.log(this.request.selectedSeatTypes)
+	  let sstbs = document.getElementsByClassName('seat-select-button')
+
+	  for (let $i = 0; $i < sstbs.length; $i++) {
+		  //console.log(sstbs[$i].value)
+		  
+		  for (let $j = 0; $j < this.request.selectedSeatTypes.length; $j++) {
+			  if (sstbs[$i].value === this.request.selectedSeatTypes[$j]['inJP']) {
+				  sstbs[$i].classList.add('selected')
+			  }
+		  }
+	  }
+  },
+
   methods: {
 
 	getNumbers(numbersInput) {
@@ -193,7 +206,6 @@ export default defineComponent({
 		//console.log(seatType);
         event.target.classList.add("selected");
       }
-      console.log(this.form.selectedSeatTypes);
     },
 
     confirm() {
