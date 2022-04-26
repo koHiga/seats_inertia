@@ -69,7 +69,9 @@
 							:key="seatType.id"
 							v-bind:value="seatType.inJP"
 							v-on:click="sstBasket($event, seatType)"
-							class="seat-select-button neumorphism"
+							:class="[ 'seat-select-button', 'neumorphism',
+								{ 'selected': form.selectedSeatTypes.includes(seatType.id) }
+							]"
 						/>
 					</div>
                 </div>
@@ -130,7 +132,7 @@ export default defineComponent({
 
       form: this.$inertia.form({
         guestsCountInput: this.request.guestsCountInput,
-        selectedSeatTypes: [],
+        selectedSeatTypes: this.request.selectedSeatTypes,
       }),
     };
   },

@@ -80,6 +80,7 @@ export default defineComponent({
 		// values below are only for developement
 		form: this.$inertia.form({
         	guestsCountInput: this.request.guestsCountInput,
+			selectedSeatTypes: this.request.selectedSeatTypes, // it is not rendered but pass data through
         	prioritizedOrderForGuidance: this.prioritizedOrderForGuidance,
         }),
     };

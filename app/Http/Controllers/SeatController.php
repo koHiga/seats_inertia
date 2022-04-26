@@ -94,8 +94,8 @@ class SeatController extends Controller
 		$request->validateWithBag(
 			'edit',
 			[
-				'guestsCountInput' => 'required'
-				//'selectedSeatTypes' => 'required'
+				'guestsCountInput' => 'required',
+				'selectedSeatTypes' => 'required'
 			]
 		);
 

@@ -22729,6 +22729,8 @@ __webpack_require__.r(__webpack_exports__);
       // values below are only for developement
       form: this.$inertia.form({
         guestsCountInput: this.request.guestsCountInput,
+        selectedSeatTypes: this.request.selectedSeatTypes,
+        // it is not rendered but pass data through
         prioritizedOrderForGuidance: this.prioritizedOrderForGuidance
       })
     };
@@ -22836,7 +22838,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       checkAllSet: false,
       form: this.$inertia.form({
         guestsCountInput: this.request.guestsCountInput,
-        selectedSeatTypes: []
+        selectedSeatTypes: this.request.selectedSeatTypes
       })
     };
   },
@@ -26226,9 +26228,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: function onClick($event) {
             return _ctx.sstBasket($event, seatType);
           },
-          "class": "seat-select-button neumorphism"
-        }, null, 8
-        /* PROPS */
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['seat-select-button', 'neumorphism', {
+            'selected': _ctx.form.selectedSeatTypes.includes(seatType.id)
+          }])
+        }, null, 10
+        /* CLASS, PROPS */
         , _hoisted_18);
       }), 128
       /* KEYED_FRAGMENT */
