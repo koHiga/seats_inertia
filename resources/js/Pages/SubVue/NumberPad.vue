@@ -147,7 +147,18 @@
 			'checkInputNum': {
 				type: Boolean,
 				default: 'false'
-			}
+			},
+			'numbersInputFromParent': {
+				default: ''
+			},
+			'inputDoneByParent': {
+				type: Boolean,
+				default: false,
+			},
+			'isDeletableByParent': {
+				type: Boolean,
+				default: false,
+			},
         },
 
         components: {
@@ -156,9 +167,9 @@
         data() {
             return {
 
-				numbersInput: '',
-				inputDone: false,
-				isDeletable: false,
+				numbersInput: this.numbersInputFromParent,
+				inputDone: this.inputDoneByParent,
+				isDeletable: this.isDeletableByParent,
 				maskOver: false,
 				
             }

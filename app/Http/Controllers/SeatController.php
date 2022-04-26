@@ -80,8 +80,27 @@ class SeatController extends Controller
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
-			'selectedSeats' => $selectedSeats,
 			'prioritizedOrderForGuidance' => $prioritizedOrderForGuidance
+		]);
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(Request $request)
+	{
+		$request->validateWithBag(
+			'edit',
+			[
+				'guestsCountInput' => 'required'
+				//'selectedSeatTypes' => 'required'
+			]
+		);
+
+		return Inertia::render('Edit', [
+			'request' => $request
 		]);
 	}
 
@@ -113,17 +132,6 @@ class SeatController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
 	{
 		//
 	}

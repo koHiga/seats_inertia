@@ -11,7 +11,7 @@
 			よろしければ確定をタップしてください。</p>
 		  </div>
 
-		  <form @submit.prevent="confirmed" class="confirm-form column">
+		  <form @submit.prevent="backToIndex" class="confirm-form column">
 			<div class="show-input-number">
 					<p>
 						{{ form.guestsCountInput }}名様
@@ -24,13 +24,12 @@
 			<div class="submit-button-wrapper t-center">
 
 				<button
-					type="button"
+					:type="submit"
 					class="back-button all-set"
-					v-on:click="backToIndex"
 				>
 					修 正
 				</button>
-				
+				<!--
 				<button
 					:type="submit"
 					class="submit-button all-set"
@@ -38,6 +37,7 @@
 				>
 					確 定
 				</button>
+				-->
 
 			<!-- Debug 
 				<button type="button" v-on:click="showValue">showValue</button>
@@ -63,8 +63,7 @@ import Footer from "../Layouts/Footer.vue";
 
 export default defineComponent({
   props: [
-	  "request", 
-	  "selectedSeats",
+	  "request",
 	  "prioritizedOrderForGuidance"
 	],
 
@@ -98,7 +97,8 @@ export default defineComponent({
 	},
 
 	backToIndex() {
-		
+		console.log("send post");
+		this.form.post(route("edit"));
   	},
   }
 })

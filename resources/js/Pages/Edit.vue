@@ -1,6 +1,6 @@
 <template>
   <app-layout>
-    <Head title="Booking Seats -Welcome" />
+    <Head title="Booking Seats -Edit" />
 
     <section class="home">
       <div class="container">
@@ -42,6 +42,9 @@
 						<NumberPad 
 							v-on:passNumbers="getNumbers"
 							v-bind:checkInputNum="checkInputNum"
+							v-bind:numbersInputFromParent="form.guestsCountInput"
+							v-bind:inputDoneByParent="true"
+							v-bind:isDeletableByParent="true"
 						></NumberPad>
 					</div>
                 </div>
@@ -103,6 +106,7 @@ import NumberPad from "./SubVue/NumberPad.vue"
 export default defineComponent({
 
 	props: [
+		"request"
 	],
 
 	components: {
@@ -125,7 +129,7 @@ export default defineComponent({
       checkAllSet: false,
 
       form: this.$inertia.form({
-        guestsCountInput: '',
+        guestsCountInput: this.request.guestsCountInput,
         selectedSeatTypes: [],
       }),
     };
