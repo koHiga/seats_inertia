@@ -129,13 +129,16 @@ export default defineComponent({
       checkAllSet: false,
 
       form: this.$inertia.form({
-        guestsCountInput: this.request.guestsCountInput,
-        selectedSeatTypes: this.request.selectedSeatTypes,
+        guestsCountInput: '',
+        selectedSeatTypes: ''
       }),
     };
   },
 
   created() {
+	  this.form.guestsCountInput = this.request.guestsCountInput
+	  this.form.selectedSeatTypes = this.request.selectedSeatTypes
+
     this.$watch(
       () => [
         this.$data.form.guestsCountInput,

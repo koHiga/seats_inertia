@@ -22837,14 +22837,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       checkInputNum: true,
       checkAllSet: false,
       form: this.$inertia.form({
-        guestsCountInput: this.request.guestsCountInput,
-        selectedSeatTypes: this.request.selectedSeatTypes
+        guestsCountInput: '',
+        selectedSeatTypes: ''
       })
     };
   },
   created: function created() {
     var _this = this;
 
+    this.form.guestsCountInput = this.request.guestsCountInput;
+    this.form.selectedSeatTypes = this.request.selectedSeatTypes;
     this.$watch(function () {
       return [_this.$data.form.guestsCountInput, _this.$data.form.selectedSeatTypes];
     }, function (_ref) {
