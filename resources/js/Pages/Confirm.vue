@@ -6,13 +6,14 @@
 	<div class="container">
 		<div class="column">
           <div class="messages-wrapper column">
-			<h1>Confirm</h1>
-			<p>{{ form.prioritizedOrderForGuidance[0]['inJP'] }}に空席がございますので、<br />
+			<h1>確認画面</h1>
+			<p v-if="form.prioritizedOrderForGuidance.length > 0">{{ form.prioritizedOrderForGuidance[0]['inJP'] }}に空席がございますので、<br />
 			よろしければ確定をタップしてください。</p>
+			<p v-else>恐れ入りますが、<br />ご指定の座席で空席がございません。</p>
 		  </div>
 
-		  <form @submit.prevent="backToIndex" class="confirm-form column">
-			<div class="show-input-number">
+		  <form @submit.prevent="confirmed" class="confirm-form column">
+			<div v-if="form.prioritizedOrderForGuidance.length > 0" class="show-input-number">
 					<p>
 						{{ form.guestsCountInput }}名様
 					</p>
@@ -20,16 +21,18 @@
 						{{ form.prioritizedOrderForGuidance[0]['inJP'] }}
 					</p>
             </div>
+			<div v-else class="show-input-number">
+				<p>空席数：0</p>
+			</div>
 
 			<div class="submit-button-wrapper t-center">
 
-				<button
-					:type="submit"
+				<div
+					v-on:click="backToIndex"
 					class="back-button all-set"
 				>
 					修 正
-				</button>
-				<!--
+				</div>
 				<button
 					:type="submit"
 					class="submit-button all-set"
@@ -37,7 +40,6 @@
 				>
 					確 定
 				</button>
-				-->
 
 			<!-- Debug 
 				<button type="button" v-on:click="showValue">showValue</button>

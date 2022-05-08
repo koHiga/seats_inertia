@@ -30,7 +30,7 @@ class SeatController extends Controller
 	{
 		// 'Confirm'で修正をタップされた場合に、データを'Index'に返す
 		$request->validateWithBag(
-			'store',
+			'show',
 			[
 				'guestsCountInput' => 'required',
 				'selectedSeatTypes' => 'required'
@@ -107,44 +107,25 @@ class SeatController extends Controller
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Request $request)
-	{
-		$request->validateWithBag(
-			'edit',
-			[
-				'guestsCountInput' => 'required',
-				'selectedSeatTypes' => 'required'
-			]
-		);
-
-		return Inertia::render('Edit', [
-			'request' => $request
-		]);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function confirmed(Request $request)
 	{
-		//
+		// 確定ボタンが押された後、客数と席種に応じてDBの残席数を書き換える
+		$request->validateWithBag(
+			'confirmd',
+			[
+				'guestsCountInput' => 'required',
+				'prioritizedOrderForGuidance' => 'required'
+			]
+		);
+
+		return Inertia::render('Confirmed', [
+			'request' => $request
+		]);
 	}
 
 

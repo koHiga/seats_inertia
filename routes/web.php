@@ -19,14 +19,11 @@ use App\Http\Controllers\VisitController;
 |
 */
 
-
-
+// Custom root
 Route::match('get', '/', [SeatController::class, 'index'])->name('index');
 Route::match('post', '/', [SeatController::class, 'show'])->name('show');
-
-// Custom root
-Route::post('/confirm', [SeatController::class, 'confirm'])->name("confirm");
-Route::post('/edit', [SeatController::class, 'edit'])->name("edit");
+Route::post('/confirm', [SeatController::class, 'confirm'])->name('confirm');
+Route::post('/confirmed', [SeatController::class, 'confirmed'])->name('confirmed');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return Inertia::render('Dashboard');

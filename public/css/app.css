@@ -373,6 +373,9 @@ footer li {
   border-radius: 5px;
   transition: box-shadow 0.1s, background-color 0.5s;
   box-shadow: 0px 0px 6px rgba(63, 63, 63, 0.5), 0px 0px 6px rgba(238, 238, 238, 0.9), inset 0px 0px 6px transparent, inset 0px 0px 6px transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .confirm-form .submit-button-wrapper .back-button::after {
   content: "";
