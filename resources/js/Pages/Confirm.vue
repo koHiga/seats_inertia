@@ -99,7 +99,7 @@ export default defineComponent({
 
 	backToIndex() {
 		console.log("send post");
-		this.form.post(route("edit"));
+		this.form.post(route("show"));
   	},
   }
 })

@@ -103,6 +103,7 @@ import NumberPad from "./SubVue/NumberPad.vue"
 export default defineComponent({
 
 	props: [
+		'request'
 	],
 
 	components: {
@@ -132,6 +133,10 @@ export default defineComponent({
   },
 
   created() {
+	  () => {
+		  
+	  },
+
     this.$watch(
       () => [
         this.$data.form.guestsCountInput,
@@ -169,6 +174,16 @@ export default defineComponent({
     );
   },
 
+  mounted() {
+	  // 'Confirm'で修正をタップされた場合の、'Index'上のデータ等の調整を行う
+	  if (this.request != null) {
+		  this.form.guestsCountInput = this.request.guestsCountInput,
+		  this.form.selectedSeatTypes = this.request.selectedSeatTypes
+	  	}
+
+		  console.log(this.form.guestsCountInput)
+  },
+
   methods: {
 
 	getNumbers(numbersInput) {
@@ -177,8 +192,8 @@ export default defineComponent({
 	},
 
     sstBasket(event, seatType) {
-      if (this.form.selectedSeatTypes.includes(seatType)) {
-        let idx = this.form.selectedSeatTypes.indexOf(seatType);
+      if (this.form.selectedSeatTypes.includes(seatType.id)) {
+        let idx = this.form.selectedSeatTypes.indexOf(seatType.id);
         this.form.selectedSeatTypes.splice(idx, 1);
         event.target.classList.remove("selected");
       } else {

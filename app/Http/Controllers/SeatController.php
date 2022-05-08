@@ -21,6 +21,28 @@ class SeatController extends Controller
 	}
 
 	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(Request $request)
+	{
+		// 'Confirm'で修正をタップされた場合に、データを'Index'に返す
+		$request->validateWithBag(
+			'store',
+			[
+				'guestsCountInput' => 'required',
+				'selectedSeatTypes' => 'required'
+			]
+		);
+
+		return Inertia::render('Index', [
+			'request' => $request
+		]);
+	}
+
+	/**
 	 * Confirmation of input and seleted seats are available or not.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -125,16 +147,7 @@ class SeatController extends Controller
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+
 
 	/**
 	 * Update the specified resource in storage.

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\VisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,10 @@ use App\Http\Controllers\SeatController;
 |
 */
 
-Route::get('/', [SeatController::class, 'index'])
-	->name('index');
+
+
+Route::match('get', '/', [SeatController::class, 'index'])->name('index');
+Route::match('post', '/', [SeatController::class, 'show'])->name('show');
 
 // Custom root
 Route::post('/confirm', [SeatController::class, 'confirm'])->name("confirm");
