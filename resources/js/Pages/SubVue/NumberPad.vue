@@ -161,9 +161,6 @@
 			},
         },
 
-        components: {
-        },
-
         data() {
             return {
 
@@ -176,6 +173,9 @@
         },
 
 		created() {
+			() => {
+				this.numbersInput = this.numbersInputFromParent
+			},
 			this.$watch(
 				() => [
 					this.$data.numbersInput,

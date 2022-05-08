@@ -39,10 +39,12 @@
 							required
                 		/>
 
-						<NumberPad 
+						<number-pad
+							ref="number-pad"
 							v-on:passNumbers="getNumbers"
+							v-bind:numbers-input-from-parent="form.guestsCountInput"
 							v-bind:checkInputNum="checkInputNum"
-						></NumberPad>
+						></number-pad>
 					</div>
                 </div>
               </div>
@@ -191,6 +193,8 @@ export default defineComponent({
 				}
 			}
 		}
+
+		this.$refs.numberPad.getInputStatus()
 	}
   },
 
