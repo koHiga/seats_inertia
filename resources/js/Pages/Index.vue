@@ -67,6 +67,7 @@
 							v-bind:value="seatType.inJP"
 							v-on:click="sstBasket($event, seatType)"
 							class="seat-select-button neumorphism"
+							ref="seatTypeButton"
 						/>
 					</div>
                 </div>
@@ -175,13 +176,22 @@ export default defineComponent({
   },
 
   mounted() {
-	  // 'Confirm'で修正をタップされた場合の、'Index'上のデータ等の調整を行う
-	  if (this.request != null) {
-		  this.form.guestsCountInput = this.request.guestsCountInput,
-		  this.form.selectedSeatTypes = this.request.selectedSeatTypes
-	  	}
+	// 'Confirm'で修正をタップされた場合の、'Index'上のデータ等の調整を行う
+	if (this.request != null) {
+		this.form.guestsCountInput = this.request.guestsCountInput,
+		this.form.selectedSeatTypes = this.request.selectedSeatTypes
 
-		  console.log(this.form.guestsCountInput)
+		// 'Confirm'から渡された'selectedSeatTypes'に応じて、css用の'selected'を付与する
+		for (let $i = 0; $i < this.$refs.seatTypeButton.length; $i++) {
+			const stb = this.$refs.seatTypeButton[$i]
+			for (let $j = 0; $j < this.form.selectedSeatTypes.length; $j++) {
+				const sst = this.form.selectedSeatTypes[$j];
+				if (stb.value == sst.inJP) {
+					stb.classList.add('selected')
+				}
+			}
+		}
+	}
   },
 
   methods: {
@@ -192,16 +202,36 @@ export default defineComponent({
 	},
 
     sstBasket(event, seatType) {
-      if (this.form.selectedSeatTypes.includes(seatType.id)) {
-        let idx = this.form.selectedSeatTypes.indexOf(seatType.id);
-        this.form.selectedSeatTypes.splice(idx, 1);
-        event.target.classList.remove("selected");
-      } else {
-        this.form.selectedSeatTypes.push(seatType);
-		//console.log(seatType);
-        event.target.classList.add("selected");
-      }
-      console.log(this.form.selectedSeatTypes);
+		console.log(seatType)
+
+		const result = this.form.selectedSeatTypes.some((item) => item.id === seatType.id)
+
+		if (result) {
+			console.log('It has!')
+			let idx = this.form.selectedSeatTypes.findIndex(sst => sst.id == seatType.id)
+			this.form.selectedSeatTypes.splice(idx, 1)
+			event.target.classList.remove('selected')
+		} else {
+			console.log('It does not have!')
+			this.form.selectedSeatTypes.push(seatType)
+			event.target.classList.add('selected')
+		}
+
+/*
+		if (this.form.selectedSeatTypes.some(seatType)) {
+			console.log(this.form.selectedSeatTypes.some(seatType))
+			
+			//let idx = this.form.selectedSeatTypes.findIndex(seatType.id)
+			//this.form.selectedSeatTypes.splice(idx, 1)
+			event.target.classList.remove('selected')
+		} else {
+			this.form.selectedSeatTypes.push(seatType)
+			event.target.classList.add('selected')
+		}
+*/
+		console.log(this.form.selectedSeatTypes)
+
+		
     },
 
     confirm() {

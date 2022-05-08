@@ -22880,25 +22880,56 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   mounted: function mounted() {
     // 'Confirm'で修正をタップされた場合の、'Index'上のデータ等の調整を行う
     if (this.request != null) {
-      this.form.guestsCountInput = this.request.guestsCountInput, this.form.selectedSeatTypes = this.request.selectedSeatTypes;
-    }
+      this.form.guestsCountInput = this.request.guestsCountInput, this.form.selectedSeatTypes = this.request.selectedSeatTypes; // 'Confirm'から渡された'selectedSeatTypes'に応じて、css用の'selected'を付与する
 
-    console.log(this.form.guestsCountInput);
+      for (var $i = 0; $i < this.$refs.seatTypeButton.length; $i++) {
+        var stb = this.$refs.seatTypeButton[$i];
+
+        for (var $j = 0; $j < this.form.selectedSeatTypes.length; $j++) {
+          var sst = this.form.selectedSeatTypes[$j];
+
+          if (stb.value == sst.inJP) {
+            stb.classList.add('selected');
+          }
+        }
+      }
+    }
   },
   methods: {
     getNumbers: function getNumbers(numbersInput) {
       this.form.guestsCountInput = numbersInput;
     },
     sstBasket: function sstBasket(event, seatType) {
-      if (this.form.selectedSeatTypes.includes(seatType.id)) {
-        var idx = this.form.selectedSeatTypes.indexOf(seatType.id);
-        this.form.selectedSeatTypes.splice(idx, 1);
-        event.target.classList.remove("selected");
-      } else {
-        this.form.selectedSeatTypes.push(seatType); //console.log(seatType);
+      console.log(seatType);
+      var result = this.form.selectedSeatTypes.some(function (item) {
+        return item.id === seatType.id;
+      });
 
-        event.target.classList.add("selected");
+      if (result) {
+        console.log('It has!');
+        var idx = this.form.selectedSeatTypes.findIndex(function (sst) {
+          return sst.id == seatType.id;
+        });
+        this.form.selectedSeatTypes.splice(idx, 1);
+        event.target.classList.remove('selected');
+      } else {
+        console.log('It does not have!');
+        this.form.selectedSeatTypes.push(seatType);
+        event.target.classList.add('selected');
       }
+      /*
+      		if (this.form.selectedSeatTypes.some(seatType)) {
+      			console.log(this.form.selectedSeatTypes.some(seatType))
+      			
+      			//let idx = this.form.selectedSeatTypes.findIndex(seatType.id)
+      			//this.form.selectedSeatTypes.splice(idx, 1)
+      			event.target.classList.remove('selected')
+      		} else {
+      			this.form.selectedSeatTypes.push(seatType)
+      			event.target.classList.add('selected')
+      		}
+      */
+
 
       console.log(this.form.selectedSeatTypes);
     },
@@ -26106,7 +26137,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: function onClick($event) {
             return _ctx.sstBasket($event, seatType);
           },
-          "class": "seat-select-button neumorphism"
+          "class": "seat-select-button neumorphism",
+          ref_for: true,
+          ref: "seatTypeButton"
         }, null, 8
         /* PROPS */
         , _hoisted_18);
