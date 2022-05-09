@@ -13,6 +13,14 @@ const mix = require('laravel-mix');
 
 // setting for debug with vuecli with laravel mix
 mix.webpackConfig({ devtool: 'source-map' });
+mix.browserSync({
+	files: [
+		'public/**/*.*'
+	],
+	proxy: {
+		target: 'http://localhost:8888/'
+	}
+})
 
 mix.js('resources/js/app.js', 'public/js').vue().sourceMaps()
     .sass('resources/sass/app.scss', 'public/css')
