@@ -425,6 +425,19 @@ footer {
 
 		.submit-button {
 			@include submitButton($theme_green, 50%, 2rem);
+
+			&:disabled {
+				opacity: 0.5;
+				cursor: default;
+			}
+
+			&:active {
+				box-shadow:
+					0px 0px 6px rgba(63, 63, 63, 0.5),
+					0px 0px 6px rgba(238, 238, 238, 0.9),
+					inset 0px 0px 6px transparent,
+					inset 0px 0px 6px transparent;
+			}
 		}
 	}
 }

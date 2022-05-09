@@ -23,7 +23,7 @@ use App\Http\Controllers\VisitController;
 Route::match('get', '/', [SeatController::class, 'index'])->name('index');
 Route::match('post', '/', [SeatController::class, 'show'])->name('show');
 Route::post('/confirm', [SeatController::class, 'confirm'])->name('confirm');
-Route::post('/confirmed', [SeatController::class, 'confirmed'])->name('confirmed');
+Route::patch('/confirmed', [SeatController::class, 'confirmed'])->name('confirmed');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return Inertia::render('Dashboard');

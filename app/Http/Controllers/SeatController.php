@@ -98,7 +98,6 @@ class SeatController extends Controller
 		usort($prioritizedOrderForGuidance, function ($v1, $v2) {
 			return $v1['priorityFromZero'] > $v2['priorityFromZero'];
 		});
-		//dd($selectedSeats);
 
 		return Inertia::render('Confirm', [
 			'request' => $request,
@@ -112,16 +111,38 @@ class SeatController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function confirmed(Request $request)
+	public function confirmed(Request $request, Seat $seat)
 	{
 		// 確定ボタンが押された後、客数と席種に応じてDBの残席数を書き換える
 		$request->validateWithBag(
-			'confirmd',
+			'confirmed',
 			[
 				'guestsCountInput' => 'required',
 				'prioritizedOrderForGuidance' => 'required'
 			]
 		);
+
+		$guestsCount = $request->guestsCountInput;
+		$prioritySeatType = $request->prioritizedOrderForGuidance;
+
+		// DBの席種の空席数を取得
+		$remaining = $seat::select('remainingSeats')->where('seatType', $prioritySeatType[0]['id'])->first();
+
+		// DBの席種の最大定員を取得
+		$maxGuests = $seat::select('maxGuestsPerSeat')->where('seatType', $prioritySeatType[0]['id'])->first();
+
+		// 上述の2つの値を掛けた数を以下の変数に代入して定義
+		$maxPeopleByRemainingSeat = $maxGuests->maxGuestsPerSeat * $remaining->remainingSeats;
+
+		$seatsCountToSubtract = ceil($guestsCount / $maxGuests->maxGuestsPerSeat);
+
+		$updatingData = $remaining->remainingSeats - $seatsCountToSubtract;
+
+		$seat::select('remainingSeats')
+			->where('seatType', $prioritySeatType[0]['id'])
+			->update(['remainingSeats' => $updatingData]);
+
+		//dd($remaining);
 
 		return Inertia::render('Confirmed', [
 			'request' => $request

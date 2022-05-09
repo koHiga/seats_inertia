@@ -22732,8 +22732,16 @@ __webpack_require__.r(__webpack_exports__);
         selectedSeatTypes: this.request.selectedSeatTypes,
         // it is not rendered but pass data through
         prioritizedOrderForGuidance: this.prioritizedOrderForGuidance
-      })
+      }),
+      isSeatAvailable: false
     };
+  },
+  created: function created() {
+    if (this.prioritizedOrderForGuidance <= 0) {
+      this.isSeatAvailable = false;
+    } else {
+      this.isSeatAvailable = true;
+    }
   },
   methods: {
     showValue: function showValue() {
@@ -22741,7 +22749,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     confirmed: function confirmed() {
       console.log("confirmed");
-      this.form.post(route("confirmed"));
+      this.form.patch(route("confirmed"));
     },
     backToIndex: function backToIndex() {
       console.log("send post");
@@ -26017,7 +26025,7 @@ var _hoisted_17 = [_hoisted_16];
 var _hoisted_18 = {
   "class": "submit-button-wrapper t-center"
 };
-var _hoisted_19 = ["type"];
+var _hoisted_19 = ["type", "disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -26027,7 +26035,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
         title: "Booking Seats -Confirm"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _ctx.form.prioritizedOrderForGuidance.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.prioritizedOrderForGuidance[0]['inJP']) + "に空席がございますので、", 1
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _ctx.isSeatAvailable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.form.prioritizedOrderForGuidance[0]['inJP']) + "に空席がございますので、", 1
       /* TEXT */
       ), _hoisted_7, _hoisted_8])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_9, _hoisted_13))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
@@ -26046,7 +26054,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, " 修 正 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: _ctx.submit,
         "class": "submit-button all-set",
-        id: "submitButton"
+        id: "submitButton",
+        disabled: !_ctx.isSeatAvailable
       }, " 確 定 ", 8
       /* PROPS */
       , _hoisted_19), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Debug \n\t\t\t\t<button type=\"button\" v-on:click=\"showValue\">showValue</button>\n\t\t\t")])], 32

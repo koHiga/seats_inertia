@@ -7,7 +7,7 @@
 		<div class="column">
           <div class="messages-wrapper column">
 			<h1>確認画面</h1>
-			<p v-if="form.prioritizedOrderForGuidance.length > 0">{{ form.prioritizedOrderForGuidance[0]['inJP'] }}に空席がございますので、<br />
+			<p v-if="isSeatAvailable">{{ form.prioritizedOrderForGuidance[0]['inJP'] }}に空席がございますので、<br />
 			よろしければ確定をタップしてください。</p>
 			<p v-else>恐れ入りますが、<br />ご指定の座席で空席がございません。</p>
 		  </div>
@@ -37,6 +37,7 @@
 					:type="submit"
 					class="submit-button all-set"
 					id="submitButton"
+					v-bind:disabled="!isSeatAvailable"
 				>
 					確 定
 				</button>
@@ -85,7 +86,17 @@ export default defineComponent({
 			selectedSeatTypes: this.request.selectedSeatTypes, // it is not rendered but pass data through
         	prioritizedOrderForGuidance: this.prioritizedOrderForGuidance,
         }),
+
+		isSeatAvailable: false,
     };
+  },
+
+  created() {
+	  if (this.prioritizedOrderForGuidance <= 0) {
+		  this.isSeatAvailable = false
+	  } else {
+		  this.isSeatAvailable = true
+	  }
   },
 
   methods: {
@@ -96,7 +107,7 @@ export default defineComponent({
 	  
 	confirmed() {
 		console.log("confirmed")
-		this.form.post(route("confirmed"))
+		this.form.patch(route("confirmed"))
 	},
 
 	backToIndex() {
