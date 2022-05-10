@@ -441,3 +441,13 @@ footer {
 		}
 	}
 }
+
+/* confirmed */
+.confirmed-wrapper {
+	.back-button {
+			@include submitButton($theme_orange, 40%, 1.8rem);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+}
