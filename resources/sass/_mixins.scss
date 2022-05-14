@@ -1,7 +1,7 @@
-@mixin submitButton($bgColor, $width, $fontSize) {
+@mixin submitButton($bgColor, $width, $height, $fontSize) {
 	
 	width: $width;
-	height: 70%;
+	height: $height;
 	background-color: rgba($color: $bgColor, $alpha: 0.5);
 	color: #eee;
 	font-size: $fontSize;

@@ -10,14 +10,19 @@
 				<p>クルーがご希望の座席へご案内いたしますので、<br />しばらくお待ちください。</p>
 			</div>
 
-			<div class="confirmed-wrapper column">
+			<div class="confirmed-wrapper">
+				<div class="column">
 			
-				<div class="submit-button-wrapper t-center">
-					<div
-						v-on:click="backToIndex"
-						class="back-button all-set"
-					>
-						戻 る
+					<div class="submit-button-wrapper t-center">
+						<Link
+							href="/"
+							method="get"
+							as="button"
+							type="button"
+							class="back-button all-set"
+						>
+							戻 る
+						</Link>
 					</div>
 				</div>
         	</div>
@@ -32,15 +37,33 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { Head, Link } from "@inertiajs/inertia-vue3"
+import AppLayout from "@/Layouts/AppLayout.vue";
+import Header from "@/Layouts/Header.vue";
+import Footer from "@/Layouts/Footer.vue";
 
 export default defineComponent({
 	props: [
 		'request'
 	],
 
+	components: {
+		Head,
+		Link,
+		AppLayout,
+		Header,
+		Footer,
+	},
+
 	data() {
 		return {
 
+		}
+	},
+
+	methods: {
+		backToIndex() {
+			
 		}
 	}
 })

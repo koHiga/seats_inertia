@@ -111,8 +111,8 @@ export default defineComponent({
 	},
 
 	backToIndex() {
-		console.log("send post");
-		this.form.post(route("show"));
+		console.log("send post")
+		this.form.post(route("show"))
   	},
   }
 })

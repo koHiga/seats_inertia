@@ -370,7 +370,7 @@ footer {
 		height: 20%;
 
 		.submit-button {
-			@include submitButton($theme_green, 30%, 2rem);
+			@include submitButton($theme_green, 30%, 70%, 2rem);
 		}
 	}
 
@@ -392,7 +392,7 @@ footer {
 		justify-content: center;
 		width: 60%;
 		height: 60%;
-		margin: 10%;
+		margin: 5%;
 		background-color: rgba(255 255 255 / 50%);
 		border: 1px solid #ddd;
 		border-radius: 0;
@@ -417,18 +417,22 @@ footer {
 		height: 20%;
 
 		.back-button {
-			@include submitButton($theme_orange, 40%, 1.8rem);
+			@include submitButton($theme_orange, 40%, 70%, 1.8rem);
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
 
 		.submit-button {
-			@include submitButton($theme_green, 50%, 2rem);
+			@include submitButton($theme_green, 50%, 70%, 2rem);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
 			&:disabled {
 				opacity: 0.5;
 				cursor: default;
+				z-index: -10;
 			}
 
 			&:active {
@@ -444,10 +448,26 @@ footer {
 
 /* confirmed */
 .confirmed-wrapper {
-	.back-button {
-			@include submitButton($theme_orange, 40%, 1.8rem);
+	height: $mainSectionHeight * 0.8;
+
+	.column {
+		height: 100%;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.submit-button-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 60%;
+		height: 20%;
+
+		.back-button {
+			@include submitButton($theme_orange, 40%, 70%, 1.8rem);
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
+	}
 }
