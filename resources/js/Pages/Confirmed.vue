@@ -37,7 +37,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { Head, Link } from "@inertiajs/inertia-vue3"
+import { Head, Link } from "@inertiajs/vue3"
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Header from "@/Layouts/Header.vue";
 import Footer from "@/Layouts/Footer.vue";

@@ -11,7 +11,7 @@
 
 <script>
     import { defineComponent } from 'vue'
-    import { Head, Link } from '@inertiajs/inertia-vue3';
+    import { Head, Link } from '@inertiajs/vue3';
     import Header from './Header.vue'
     import Footer from './Footer.vue'
 

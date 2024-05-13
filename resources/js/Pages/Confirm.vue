@@ -58,8 +58,8 @@
 
 <script>
 import { defineComponent } from "vue";
-import { Inertia } from "@inertiajs/inertia"
-import { Head } from "@inertiajs/inertia-vue3";
+import { Inertia } from "@inertiajs/vue3"
+import { Head } from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Header from "../Layouts/Header.vue";
 import Footer from "../Layouts/Footer.vue";
